@@ -2,7 +2,7 @@
 
 # Question link
 # https://www.geeksforgeeks.org/c-program-for-tower-of-hanoi/
-
+# where, n is no of discs. A - source, B - destination, C - helper
 
 def towerOfHanoi(n, A, B, C):
     if (n == 0):
