@@ -26,5 +26,6 @@ def indices(arr, i, n):
     else:
         return indices(arr, i+1, n)
     
+
 ans = indices(arr, 0, 2)
 print(ans)
