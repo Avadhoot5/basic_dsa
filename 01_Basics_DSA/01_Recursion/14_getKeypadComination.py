@@ -14,7 +14,34 @@ def letterCombinations(digits):
     
     if (len(digits) == 0):
         return []
-    ch = digits[0]
-    ros = digits[1:]
+    
+    letter = ''
+    for i in digits:
+        letter += digit_To_Letters[i]
+
+    def getSeq(str):
+        if (len(str) == 0):
+            return ['']
+        ch = str[0]
+        ros = str[1:]
+        gsq = getSeq(ros)
+
+        mres = []
+        for i in gsq:
+            mres.append('' + i)
+        for i in gsq:
+            mres.append(ch + i)
+        
+        return mres
+
+    arrList = getSeq(letter)
+    return arrList
+
+
+ans = letterCombinations('25')
+print(ans)
+
+
+
 
 
