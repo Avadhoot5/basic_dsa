@@ -11,9 +11,9 @@ def recStr(str):
     rres = recStr(ros)
     mres = []
     for i in rres:
-        mres.append((ch + i))
-    for i in rres:
         mres.append('' + i)
+    for i in rres:
+        mres.append((ch + i))
     return mres
 
 ans = recStr('abc')
