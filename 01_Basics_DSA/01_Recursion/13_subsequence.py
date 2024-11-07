@@ -2,7 +2,6 @@
 
 # abc -> result from bc. 
 
-
 def recStr(str):
     if (len(str) == 0):
         return ['']

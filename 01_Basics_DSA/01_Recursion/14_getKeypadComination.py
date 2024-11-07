@@ -34,14 +34,16 @@ def letterCombinations(digits):
         
         return mres
 
+    def twoLen(arrList):
+        newList = []
+        for i in arrList:
+            if (len(i) == 2):
+                newList.append(i)
+        return newList
+
     arrList = getSeq(letter)
-    return arrList
+    finalList = twoLen(arrList)
+    return finalList
 
-
-ans = letterCombinations('25')
+ans = letterCombinations('2')
 print(ans)
-
-
-
-
-
