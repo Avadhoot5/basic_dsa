@@ -1,4 +1,5 @@
 # Get Keypad Combination
+# the below approach is not right, since it uses susequence logic.
 
 def letterCombinations(digits):
     digit_To_Letters = {
@@ -34,16 +35,9 @@ def letterCombinations(digits):
         
         return mres
 
-    def twoLen(arrList):
-        newList = []
-        for i in arrList:
-            if (len(i) == 2):
-                newList.append(i)
-        return newList
-
     arrList = getSeq(letter)
-    finalList = twoLen(arrList)
-    return finalList
+
+    return arrList
 
 ans = letterCombinations('2')
 print(ans)
