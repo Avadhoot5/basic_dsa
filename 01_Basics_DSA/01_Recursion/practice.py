@@ -65,5 +65,23 @@
 
 # toc(3, 'A', 'B', 'C')
 
-# get Maze Paths 
+# subsequence of a given string
+
+def getSeq(word):
+    # base case
+    if (len(word) == 0):
+        return ['']
+
+    ch = word[0]
+    ros = word[1:]
+    ros_Result = getSeq(ros)
+    final_Result = []
+    for i in ros_Result:
+        final_Result.append('' + i)    
+    for i in ros_Result:
+        final_Result.append(ch + i)
+    
+    return final_Result
+
+print(getSeq('abc'))
 
