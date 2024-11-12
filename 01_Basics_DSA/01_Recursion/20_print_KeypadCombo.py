@@ -19,13 +19,10 @@ def printKPC(que, ans):
     ch = que[0]
     roq = que[1:]
     chValue = digit_To_Letters[ch]
-    roqResult = printKPC(roq, ch + ans)
-    for i in roqResult:
-        printKPC(roq, i)
-
-
-
+    for i in chValue:
+        printKPC(roq, ans + i)
 
 printKPC('23', '')
 
 # ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']
+# ad,ae,af,bd,be,bf,cd,ce,cf
