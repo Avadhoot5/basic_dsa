@@ -8,9 +8,9 @@ def getStairs(n, path):
     if (n < 0):
         return
     
-    getStairs(n-1, '1' + path)
-    getStairs(n-2, '2' + path)
-    getStairs(n-3, '3' + path)
+    getStairs(n-1, path + '1')
+    getStairs(n-2, path + '2')
+    getStairs(n-3, path + '3')
 
 
 getStairs(4, '')
