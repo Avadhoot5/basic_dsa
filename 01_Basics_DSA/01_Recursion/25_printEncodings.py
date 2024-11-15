@@ -9,14 +9,21 @@ def printEncoding(str, ans):
     if (len(str) == 0):
         print(ans)
     elif (len(str) == 1):
+        if (str[0] == 0):
+            return
+        else:
+            code = alphaToNum[f'{str[0]}']
+            print(ans + code)
+    else:
         if (str[0] == '0'):
             return
         else:
+            ch = str[0]
+            ros = str[1:]
+            printEncoding(ros, ans + ch)
             code = alphaToNum(str[0])
             ans = ans + code
             print(ans)
-    else:
-        pass
 
 
 
