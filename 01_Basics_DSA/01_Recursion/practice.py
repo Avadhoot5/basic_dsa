@@ -85,3 +85,21 @@
 
 # print(getSeq('abc'))
 
+encodings =  ["0", 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',  'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+def printEnc(nu, ans):
+
+    if len(nu) == 0:                  
+        print(ans)
+        return
+    
+    if int(nu[0]) == 0:           
+        return
+    
+    if len(nu) >= 1:                                                                          
+        printEnc(nu[1:], ans + encodings[int(nu[0])])
+    
+    if int(nu[:2]) <= 26 and len(nu) >= 2:      
+        printEnc(nu[2:], ans + encodings[int(nu[:2])])
+
+printEnc('123', '')
