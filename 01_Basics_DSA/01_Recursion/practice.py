@@ -85,21 +85,48 @@
 
 # print(getSeq('abc'))
 
-encodings =  ["0", 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',  'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+# encode =  ["0", 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',  'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-def printEnc(nu, ans):
+# def printEnc(num, ans):
 
-    if len(nu) == 0:                  
-        print(ans)
-        return
+#     if (len(num) == 0):
+#         print(ans)
+#         return
     
-    if int(nu[0]) == 0:           
-        return
+#     if (int(num[0]) == 0):
+#         return
     
-    if len(nu) >= 1:                                                                          
-        printEnc(nu[1:], ans + encodings[int(nu[0])])
-    
-    if int(nu[:2]) <= 26 and len(nu) >= 2:      
-        printEnc(nu[2:], ans + encodings[int(nu[:2])])
+#     if (len(num[0]) >= 1):
+#         printEnc(num[1:], ans + encode[int(num[0])])
 
-printEnc('123', '')
+#     if (len(num[:2]) >= 2 and int(num[:2]) <= 26):
+#         printEnc(num[2:], ans + encode[int(num[:2])])
+        
+
+# printEnc('123', '')
+
+def permArr(arr):
+    value = ''.join(map(str, arr))
+    
+    def fn(value):
+
+        if (len(value) == 0):
+            return ['']
+        
+        resultArr = []
+
+        for i in range(0, len(value)):
+            ch = value[i]
+            lstr = value[:i]
+            rstr = value[i+1:]
+            fstr = lstr + rstr
+            ans = fn(fstr)
+            for i in ans:
+                resultArr.append(ch + i)
+
+        return resultArr
+
+    return fn(value)
+
+ans = permArr([1,2,3])
+print(ans)
