@@ -105,28 +105,39 @@
 
 # printEnc('123', '')
 
-def permArr(arr):
-    value = ''.join(map(str, arr))
+# def permArr(arr):
+#     value = ''.join(map(str, arr))
     
-    def fn(value):
+#     def fn(value):
 
-        if (len(value) == 0):
-            return ['']
+#         if (len(value) == 0):
+#             return ['']
         
-        resultArr = []
+#         resultArr = []
 
-        for i in range(0, len(value)):
-            ch = value[i]
-            lstr = value[:i]
-            rstr = value[i+1:]
-            fstr = lstr + rstr
-            ans = fn(fstr)
-            for i in ans:
-                resultArr.append(ch + i)
+#         for i in range(0, len(value)):
+#             ch = value[i]
+#             lstr = value[:i]
+#             rstr = value[i+1:]
+#             fstr = lstr + rstr
+#             ans = fn(fstr)
+#             for i in ans:
+#                 resultArr.append(ch + i)
 
-        return resultArr
+#         return resultArr
 
-    return fn(value)
+#     return fn(value)
 
-ans = permArr([1,2,3])
-print(ans)
+# ans = permArr([1,2,3])
+# print(ans)
+
+# numbers = [1, 6, 7, 8, 11, 13, 14, 18, 19, 21, 22, 23, 25, 27, 33, 34, 35, 37, 41, 42, 49, 50, 51, 54, 56, 59, 60, 62, 65, 66, 73, 74, 77, 82, 88, 89, 90, 92]
+
+# def bSearch(arr, n):
+#     low = 0
+#     high = len(arr)
+    
+
+# ans = bSearch(numbers, 19)
+# print(ans)
+
