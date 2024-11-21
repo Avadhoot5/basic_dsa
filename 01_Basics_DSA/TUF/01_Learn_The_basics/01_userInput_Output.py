@@ -19,3 +19,4 @@ def dataSize(str):
 
 ans = dataSize('Character')
 print(ans)
+
