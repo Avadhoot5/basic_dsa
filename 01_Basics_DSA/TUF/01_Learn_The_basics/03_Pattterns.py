@@ -58,9 +58,27 @@ def centerTriDown(n):
         print('*' * ((2*(n-i))+1))
         print(' ' * (i), end = '')
 
-centerTriDown(5)
+# centerTriDown(5)
 
+def diamond(n):
+    for i in range(1, (2*n)+1):
+        if (i <= n):
+            print(' ' * (n-i), end = '')
+            print('*' * ((2*i)-1))
+        else:
+            print('*' * ((2*((2*n)-i))+1))
+            print(' ' * (i-n), end = '')
 
+# diamond(5)
+
+def triFull(n):
+    for i in range(1, 2*n):
+        if (i < n):
+            print('*' * i)
+        else:
+            print('*' * ((2*n)-i))
+
+# triFull(5)
 
 
 
