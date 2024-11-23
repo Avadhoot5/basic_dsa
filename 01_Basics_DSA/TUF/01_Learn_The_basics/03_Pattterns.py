@@ -9,11 +9,27 @@ def square(n):
 
 # square(5)
 
+def squareAlt(n):
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            print('*', end = '')
+        print()
+
+# squareAlt(5)
+
 def triangle(n):
     for i in range(1, n+1):
         print(i * '*')
 
 # triangle(5)
+
+def triangleALt(n):
+    for i in range(1, n+1):
+        for j in range(1, i+1):
+            print('*', end = '')
+        print()
+
+# triangleALt(5)
 
 def triNum(n):
     val = ''
@@ -23,6 +39,14 @@ def triNum(n):
 
 # triNum(5)
 
+def triNumAlt(n):
+    for i in range(1, n+1):
+        for j in range(1, i+1):
+            print(j, end = '')
+        print()
+
+# triNumAlt(5)
+
 def triNum2(n):
     for i in range(1, n+1):
         val = ''
@@ -31,11 +55,27 @@ def triNum2(n):
     
 # triNum2(5)
 
+def triNum2Alt(n):
+    for i in range(1, n+1):
+        for j in range(1, i+1):
+            print(i, end='')
+        print()
+
+# triNum2Alt(5)
+
 def opTri(n):
     for i in range(n, 0, -1):
         print('*' * i)
 
 # opTri(5)
+
+def opTriAlt(n):
+    for i in range(1, n+1):
+        for j in range(1, (n-i)+2):
+            print('*', end = '')
+        print()
+
+# opTriAlt(5)
 
 def numTri(n):
     for i in range(n, 0, -1):
@@ -46,6 +86,14 @@ def numTri(n):
 
 # numTri(5)
 
+def numTriAlt(n):
+    for i in range(1, n+1):
+        for j in range(1, (n-i)+2):
+            print(j, end = '')
+        print()
+
+# numTriAlt(5)
+
 def centerTri(n):
     for i in range(1, n+1):
         print(' ' * (n-i), end = '')
@@ -53,12 +101,32 @@ def centerTri(n):
 
 # centerTri(5)
 
+def centerTriAlt(n):
+    for i in range(1, n+1):
+        for j in range(1, (n-i)+1):
+            print(' ', end = '')
+        for k in range(1, ((2*i)-1)+1):
+            print('*', end = '')
+        print()
+
+# centerTriAlt(5)
+
 def centerTriDown(n):
     for i in range(1, n+1):
         print('*' * ((2*(n-i))+1))
         print(' ' * (i), end = '')
 
 # centerTriDown(5)
+
+def centerTriDownAlt(n):
+    for i in range(1, n+1):
+        for j in range(1, i):
+            print(' ', end = '')
+        for k in range(1, (2*(n-i))):
+            print('*', end = '')
+        print()
+
+# centerTriDownAlt(5)
 
 def diamond(n):
     for i in range(1, (2*n)+1):
@@ -79,6 +147,4 @@ def triFull(n):
             print('*' * ((2*n)-i))
 
 # triFull(5)
-
-
 
