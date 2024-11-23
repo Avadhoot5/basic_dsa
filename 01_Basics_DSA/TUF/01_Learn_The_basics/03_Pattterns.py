@@ -139,6 +139,23 @@ def diamond(n):
 
 # diamond(5)
 
+def diamondAlt(n):
+    for i in range(1, (2*n)):
+        if (i <= n):
+            for j in range(1, (n-i)+1):
+                print(' ', end='')
+            for k in range(1, (2*i)):
+                print('*', end = '')
+        else:
+            for k in range(1, (i-n)+1):
+                print(' ', end='') 
+            for j in range(1, ((2*((2*n)-i)))):
+                print('*', end = '')
+        print()
+        pass
+
+# diamondAlt(5)
+
 def triFull(n):
     for i in range(1, 2*n):
         if (i < n):
@@ -148,3 +165,15 @@ def triFull(n):
 
 # triFull(5)
 
+# 11. Pattern ques -> 
+
+def numTree(n):
+    for i in range(1, n+1):
+        val = '01'
+        if (i % 2 == 0):
+            print(val * (i//2), end ='')
+        else:
+            print('1' + (val * ((i-1)//2)), end ='')
+        print()
+
+numTree(5)
