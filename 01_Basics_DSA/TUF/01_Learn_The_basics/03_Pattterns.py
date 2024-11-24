@@ -176,4 +176,125 @@ def numTree(n):
             print('1' + (val * ((i-1)//2)), end ='')
         print()
 
-numTree(5)
+# numTree(5)
+
+def numTreeAll(n):
+    for i in range(1, n+1):
+        # 1st part
+        for j in range(1, i+1):
+            print(j, end = '')
+        
+        for l in range(1, (2*(n-i))+1):
+            print(' ', end = '')
+
+        # reverse part
+        for k in range(1, i+1):
+            print(i-k+1, end = '')
+        print()
+
+# numTreeAll(6)
+
+# 13. 
+
+def numAll(n):
+    val = 1
+    for i in range(1, n+1):
+        for j in range(1, i+1):
+            print(str(val) + ' ', end = '')
+            val += 1
+        print()
+
+# numAll(5)
+
+def alphaTri(n):
+    for i in range(65, 65+n):
+        for j in range(65, i+1):
+            print(chr(j), end = '')
+        print()
+
+# alphaTri(5)
+
+def alphaTriRev(n):
+    for i in range(65+n, 65, -1):
+        for j in range(65, i):
+            print(chr(j), end = '')
+        print()
+
+# alphaTriRev(5)
+
+def triAlpha(n):
+    for i in range(65, 65+n):
+        for j in range(65, i+1):
+            print(chr(i), end = '')
+        print()
+
+# triAlpha(5)
+
+def triAlphaSpace(n):
+    for i in range(65, 65+n):
+        print(' ' * ((65+n)-i), end ='')
+        for j in range(65, i):
+            print(chr(j), end = '')
+        for k in range(i, 64, -1):
+            print(chr(k), end='')
+        print()
+
+# triAlphaSpace(5)
+
+def triAlphRev(n):
+    for i in range(64+n, 64, -1):
+        for j in range(i, 64+n+1):
+            print(chr(j), end = '')
+        print()
+
+# triAlphRev(5)
+
+#  19. 
+
+def dimaondSqr(n):
+    # upper part loops:
+    for i in range(1, n+1):
+        if (i <= n):
+            for ult in range(1, (n-i)+2):
+                print('*', end = '')
+            print(' ' * ((2*i)-2), end= '')
+            for urt in range(1, (n-i)+2):
+                print('*', end = '')
+        print()
+    # lower part loops:
+    for i in range(1, n+1):
+        for j in range(1, i+1):
+            print('*', end = '')
+
+        print(' ' * ((2*(n-i))), end= '')
+
+        for j in range(1, i+1):
+            print('*', end = '')
+        print() 
+
+# dimaondSqr(5)
+
+# 20.
+
+def crossTri(n):
+    for i in range(1, (2*n)):
+        if (i <= n):
+            for j in range(1, i+1):
+                print('*', end='')
+            
+            print(' ' * (2*(n-i)), end ='')
+
+            for k in range(1, i+1):
+                print('*', end='')
+        else:
+            for j in range(i, (2*n)):
+                print('*', end='')
+            print(' ' * (2*(i-n)), end ='')
+            for k in range(i, (2*n)):
+                print('*', end='')
+        print()
+
+# crossTri(5)
+
+# 21.
+
