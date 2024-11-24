@@ -298,3 +298,32 @@ def crossTri(n):
 
 # 21.
 
+def rectSpace(n):
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            if (i == 1 or i == n):
+                print('*', end='')
+            else:
+                if (j == 1 or j == n):
+                    print('*', end = '')
+                else:
+                    print(' ', end = '')
+        print()
+
+# rectSpace(5)
+
+# 22. - final pattern 
+
+def finalP(n):
+    for i in range(0, (2*n)-1):
+        for j in range(0, (2*n)-1):
+            top = i
+            left = j
+            right = (2*n-2) - j
+            down = (2*n-2) - i
+            val = n - (min(top, left, right, down))
+            print(val, end ='')
+        print()
+            
+
+finalP(4)
