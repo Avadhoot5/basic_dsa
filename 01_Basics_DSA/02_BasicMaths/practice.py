@@ -1,23 +1,48 @@
+# Basic Maths 
+
+# extracting the digits
+
+def digit(n):
+    while(n > 0):
+        last = n % 10
+        print(last)
+        n = n // 10
+
+# ans = digit(3492)
+
+def countDigit(n):
+    ctr = 0
+    while (n > 0):
+        ctr += 1
+        n = n // 10
+    return ctr
+
+# ans = countDigit(329)
+# print(ans)
+
+import math
+
+def countWithLog(n):
+    count = int(math.log10(n) + 1)
+    return count
+
+# print(countWithLog(9424))
+
+# whenever division comes then the TC is log.
+
+# TC - Log10(n) - no of iterations depends on the the division. log2(n) = if n // 2
+
+# reverse a number
+
+def reverse(n):
+    rev = 0
+    while(n > 0):
+        lastDig = n % 10
+        rev = (rev * 10) + lastDig
+        n = n // 10
+    return rev
+
+print(reverse(10400))
 
 
-numbers = [1, 6, 7, 8, 11, 13, 14, 18, 19, 21, 22, 23, 25, 27, 33, 34, 35, 37, 41, 42, 49, 50, 51, 54, 56, 59, 60, 62, 65, 66, 73, 74, 77, 82, 88, 89, 90, 92]
 
-def bSearch(arr, n):
-    low = 0
-    high = len(numbers) - 1
-
-    while (low <= high):
-        mid = (low + high) // 2
-        guess = arr[mid]
-
-        if (guess == n):
-            return mid
-        elif (guess > n):
-            high = mid-1
-        elif (guess < n):
-            low = mid + 1
-    return None
-
-
-ans = bSearch(numbers, 83)
-print(ans)
