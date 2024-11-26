@@ -247,7 +247,7 @@ def triAlphRev(n):
             print(chr(j), end = '')
         print()
 
-# triAlphRev(5)
+triAlphRev(5)
 
 #  19. 
 
