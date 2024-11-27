@@ -46,6 +46,28 @@ def reverse(n):
 
 # print(reverse(10400))
 
+# alt - 32-bit, negative and positive cases. 
+
+def reverseAlt(n):
+    isNegative = False
+
+    if (n < 0):
+        isNegative = True
+        n *= -1
+    
+    rev = 0
+    while(n > 0):
+        lastDigit = n % 10
+        rev = rev*10 + lastDigit
+        n = n // 10
+
+    if (rev > 2**31):
+        return 0
+    
+    return rev * -1 if isNegative else rev
+
+# print(reverseAlt(23523))
+
 # 3. palindrome or not.
 
 def palindrome(n):
@@ -135,11 +157,76 @@ def primeCheck(n):
 # 7. GCD / HCF - greatest common divisor / highest common factor
 
 def gcd(a, b):
-    ans = 0
-    for i in range(1, a+1):
+    gcdAns = 1
+    # TC => O(min(a,b))
+    for i in range(1, min(a,b)+1):
         if (a % i == 0 and b % i == 0):
-            ans = i
-    return ans
+            gcdAns = i
+    return gcdAns
 
-print(gcd(11, 23))
+# print(gcd(20, 40))
+
+def gcdAlt(a, b):
+    # TC => O(min(a,b))
+    for i in range(min(a, b), 1, -1):
+        if (a % i == 0 and b % i == 0):
+            print(i)
+            break
+
+# gcdAlt(20, 40)
+
+# Euclidean algorithm 
+
+def gcdEA(a, b):
+    while (a > 0 and b > 0):
+        if (a>b):
+            a = a % b
+        else:
+            b = b % a
+    if (a == 0):
+        return b
+    return a
+
+# print(gcdEA(20, 40))
+
+# Frequency of elements
+
+# arr = [4, 1, 2, 3, 1, 1]
+
+# def freq(arr):
+#     finalArr = []
+#     freqElements = {}
+#     for i in arr:
+#         if (i in freqElements):
+#             freqElements[i] += 1
+#         else:
+#             freqElements[i] = 1
+#     # return dict(sorted(freqElements.items()))
+
+#     sortByFreq = sorted(freqElements.items(), key=lambda item: (item[1], item[0]))
+#     print(sortByFreq)
+#     maxOccur = sortByFreq[-1][0]
+#     minOccur = sortByFreq[0][0]
+#     finalArr.append(maxOccur)
+#     finalArr.append(minOccur)
+#     return finalArr
+
+
+# ans = freq(arr)
+# print(ans)
+
+def sumDivisors(n):
+    # pass
+    if (n == 0):
+        return 0
+    val = sumDivisors(n-1)
+
+    sum = 0
+    for i in range(1, n+1):
+        if (n % i == 0):
+            sum += i
+    return sum
+
+print(sumDivisors(4))
+
 
