@@ -50,8 +50,32 @@ def freqElements(arr):
 
     return hashArr[1:]
 
-print(freqElements(inputArr))
-
+# print(freqElements(inputArr))
 
 # 2. Find highest/lowest frequency element
 
+freqArr = [1,2,5,2,1,3,2,9,7,6]
+
+def highLow(arr, n):
+    hashArr = {}
+    for i in arr:
+        if (i in hashArr):
+            hashArr[i] += 1
+        else:
+            hashArr[i] = 1
+
+    maxCount, minCount = 0, len(arr)
+    maxElement, minElement = 0, 0
+    for i in hashArr.items():
+        if (i[1] > maxCount):
+            maxCount = i[1]
+            maxElement = i[0]
+        if (i[1] < minCount):
+            minCount = i[1]
+            minElement = i[0]
+
+    print(f'Maximum element is {maxElement} with count: {maxCount}')
+    print(f'Minimum element is {minElement} with count: {minCount}')
+
+
+highLow(freqArr, len(freqArr))
