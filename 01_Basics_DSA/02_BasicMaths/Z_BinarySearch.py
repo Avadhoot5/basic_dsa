@@ -25,3 +25,5 @@ print(ans)
 
 # exercises 
 
+# binary search question 
+
