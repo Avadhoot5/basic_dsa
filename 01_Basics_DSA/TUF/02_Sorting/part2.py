@@ -8,7 +8,6 @@
 arr1 = [9, 13, 20, 24, 46, 52]
 arr2 = [2, 3, 5, 6, 8, 16]
 
-
 def twoWayMerge(A, B, m, n):
     i, j, k = 0,0,0
     finalArr = [0] * (m+n)
@@ -30,7 +29,8 @@ def twoWayMerge(A, B, m, n):
         k += 1
     return finalArr
 
-print(twoWayMerge(arr1, arr2, 6, 6))
+# print(twoWayMerge(arr1, arr2, 6, 6))
 
 # Merge Sort - uses recursive method
-
+ 
+ 
