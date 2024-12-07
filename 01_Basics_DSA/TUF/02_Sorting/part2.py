@@ -32,5 +32,4 @@ def twoWayMerge(A, B, m, n):
 # print(twoWayMerge(arr1, arr2, 6, 6))
 
 # Merge Sort - uses recursive method
- 
- 
+
