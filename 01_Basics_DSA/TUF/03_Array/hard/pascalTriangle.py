@@ -28,5 +28,45 @@ def pascalNtriBF(n):
         value = elementnCr(n-1, i-1)
         print(value, end = '')
 
-# pascalNtriBF(6)
+# pascalNtriBF(6) 
+
+# better than above.
+
+# TC - O(N)
+# SC - O(1)
+
+def pascalNtriBetter(n):
+    ans = 1
+    print(ans, end = ' ')
+    for i in range(1, n):
+        ans = ans * (n-i)
+        ans = ans // i
+        print(ans, end = ' ')
+
+# pascalNtriBetter(6)
+
+# 3rd Type 
+
+def pascalRow(n):
+    resultArray = []
+    ans = 1
+    resultArray.append(1)
+    for i in range(1, n):
+        ans = ans * (n-i)
+        ans = ans // i
+        resultArray.append(ans)
+    return resultArray 
+
+def pascalNtri(n):
+    finalArr = []
+    finalArr.append([1])
+    for i in range(2, n+1):
+        result = pascalRow(i)
+        finalArr.append(result)
+    return finalArr
+
+ans = pascalNtri(6)
+print(ans)
+
+
 

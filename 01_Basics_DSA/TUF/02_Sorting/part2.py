@@ -33,3 +33,46 @@ def twoWayMerge(A, B, m, n):
 
 # Merge Sort - uses recursive method
 
+mergeArr = [3,4,1,6,2,5,7]
+
+def mS(arr, low, mid, high):
+    temp = []
+    left = low
+    right = mid + 1
+
+    while (left <= mid and right <= high):
+        if (arr[left] <= arr[right]):
+            temp.append(arr[left])
+            left += 1
+        else:
+            temp.append(arr[right])
+            right += 1
+
+    while (left <= mid):
+        temp.append(arr[left])
+        left += 1
+
+    while (right <= high):
+        temp.append(arr[right])
+        right += 1
+
+    for i in range(low, high+1):
+        arr[i] = temp[i - low]
+    print('hello')
+    print(arr)
+
+def mergeS(arr, low, high):
+    # base case
+    if (low <= high):
+        return
+    mid = (low + high) // 2 
+    mergeS(arr, low, mid)
+    mergeS(arr, mid + 1, high)
+    mS(arr, low, mid, high)
+
+def mergeSort(arr, n):
+    return mergeS(arr, 0, n-1)
+
+ans = mergeSort(mergeArr, len(mergeArr))
+print(ans)
+
