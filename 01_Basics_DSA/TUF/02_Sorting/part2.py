@@ -58,12 +58,10 @@ def mS(arr, low, mid, high):
 
     for i in range(low, high+1):
         arr[i] = temp[i - low]
-    print('hello')
-    print(arr)
 
 def mergeS(arr, low, high):
     # base case
-    if (low <= high):
+    if (low >= high):
         return
     mid = (low + high) // 2 
     mergeS(arr, low, mid)
@@ -71,8 +69,36 @@ def mergeS(arr, low, high):
     mS(arr, low, mid, high)
 
 def mergeSort(arr, n):
-    return mergeS(arr, 0, n-1)
+    mergeS(arr, 0, n-1)
 
-ans = mergeSort(mergeArr, len(mergeArr))
-print(ans)
+mergeSort(mergeArr, len(mergeArr))
+# print(mergeArr)
+
+insertArr = [13, 46, 24, 52, 20, 9]
+
+# recursive bubble sort
+
+def recBubble(arr, n):
+    if (n == 1):
+        return arr
+    didSwap = 0
+    for i in range(0, n-1):
+        if (arr[i] > arr[i+1]):
+            arr[i], arr[i+1] = arr[i+1], arr[i]
+            didSwap = 1
+        if (didSwap == 0): return
+    return recBubble(arr, n-1)
+
+
+# print(recBubble(insertArr, len(insertArr)))
+
+# recursive insertion sort
+
+def recInsertion(arr, n):
+    pass
+
+print(recInsertion(insertArr, len(insertArr)))
+
+# Quick Sort
+
 
