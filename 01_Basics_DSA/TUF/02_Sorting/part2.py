@@ -94,10 +94,26 @@ def recBubble(arr, n):
 
 # recursive insertion sort
 
-def recInsertion(arr, n):
-    pass
+def insertion(arr, n):
+    for i in range(0, n):
+        j = i
+        while (j > 0 and arr[j-1] > arr[j]):
+            arr[j-1], arr[j] = arr[j], arr[j-1]
+            j -= 1
+    return arr
 
-print(recInsertion(insertArr, len(insertArr)))
+
+def recInsertion(arr, n, i):
+    if (i == n):
+        return arr
+    for j in range(i, 0, -1):
+        if (arr[j-1] > arr[j]):
+            arr[j-1], arr[j] = arr[j], arr[j-1]
+    return recInsertion(arr, n, i+1)
+
+
+ans = recInsertion(insertArr, len(insertArr), 1)
+print(ans)
 
 # Quick Sort
 
