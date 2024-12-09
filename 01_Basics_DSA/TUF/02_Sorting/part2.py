@@ -117,4 +117,14 @@ print(ans)
 
 # Quick Sort
 
+insertArr = [13, 46, 24, 52, 20, 9]
+
+def quickSort(arr):
+    pass
+
+
+ans = quickSort(insertArr)
+print(ans)
+
+
 
