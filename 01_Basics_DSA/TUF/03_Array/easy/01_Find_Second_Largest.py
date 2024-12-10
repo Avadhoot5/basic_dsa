@@ -96,9 +96,11 @@ def secondLO(arr):
         if (arr[i] > large):
             second = large
             large = arr[i]
+        elif (arr[i] < large and arr[i] > second):
+            second = arr[i]
     return second
 
-print(secondLO(secondArr))
+# print(secondLO(secondArr))
 
 def secondSO(arr):
     smallest = arr[0]
@@ -107,6 +109,9 @@ def secondSO(arr):
         if (arr[i] < smallest):
             secondSmallest = smallest
             smallest = arr[i]
+        elif (arr[i] != smallest and arr[i] < secondSmallest):
+            secondSmallest = arr[i]
     return secondSmallest
 
-print(secondSO(secondArr))
+# print(secondSO(secondArr))
+
