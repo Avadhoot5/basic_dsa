@@ -112,18 +112,36 @@ def recInsertion(arr, n, i):
     return recInsertion(arr, n, i+1)
 
 
-ans = recInsertion(insertArr, len(insertArr), 1)
-print(ans)
+# ans = recInsertion(insertArr, len(insertArr), 1)
+# print(ans)
 
 # Quick Sort
 
-insertArr = [13, 46, 24, 52, 20, 9]
+quickArr = [4, 6, 2, 5, 7, 9, 1, 3]
 
-def quickSort(arr):
-    pass
+def partition(arr, low, high):
+    pivot = arr[low]
+    i = low
+    j = high
 
+    while (i < j):
+        while (i <= (high-1) and arr[i] <= pivot):
+            i += 1
+        while (j >= (low+1) and arr[j] > pivot):
+            j -= 1
+        if (i < j):
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[low], arr[j] = arr[j], arr[low]
+    return j
 
-ans = quickSort(insertArr)
+def quickSort(arr, low , high):
+    if (low < high):
+        pIndex = partition(arr, low, high)
+        quickSort(arr, low, pIndex - 1)
+        quickSort(arr, pIndex + 1, high)
+        return arr
+
+ans = quickSort(quickArr, 0, len(quickArr)-1)
 print(ans)
 
 
