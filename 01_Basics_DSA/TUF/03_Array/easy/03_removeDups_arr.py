@@ -27,18 +27,15 @@ def removeDuplicatesBFSet(arr):
 
 # print(removeDuplicatesBFSet(dupArray))
 
-# dupArray2 = [1,1,2,2,2,3,3]
+dupArray2 = [1,1,2,2,2,3,3]
 
-# def removeDuplicatesBF2(arr):
-#     finalArray = []
-#     low = 0
-#     for i in range(0, len(arr)-1):
-#         if (arr[i] == arr[i+1]):
-#             low += 1
-#         else:
-#             finalArray.append(arr[low])
-#             low += 1
-#     return finalArray
+def removeDuplicatesBF2(arr):
+    i = 0
+    for j in range(1, len(arr)):
+        if (arr[i] != arr[j]):
+            arr[i+1] = arr[j]
+            i += 1
+    return i+1
 
-# print(removeDuplicatesBF2(dupArray2))
+print(removeDuplicatesBF2(dupArray2))
 
