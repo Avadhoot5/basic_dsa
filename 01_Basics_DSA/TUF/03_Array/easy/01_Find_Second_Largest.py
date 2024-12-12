@@ -73,7 +73,7 @@ def secondLEBF(arr):
 
 # Better approach - T.C => O(N + N) = O(2N)
 
-# first iterate and take the largest element, then gain iterate and take the 2nd smallest element, less than the largest element. 
+# first iterate and take the largest element, then again iterate and take the 2nd smallest element, less than the largest element. 
 
 def secondLEB(arr):
     large = arr[0]
