@@ -1,20 +1,14 @@
 
-# move zeros 
+# remove duplicates from sorted array 
 
-inputArr = [1, 0, 2, 3, 2, 0, 0, 4, 5, 1]
+arr = [1,1,2,3,3,4,5,5,5]
 
-def moveZero(arr, n):
-    j = -1
-    for i in range(0, n):
-        if (arr[i] == 0):
-            j = i
-            break
-    
-    for i in range(j+1, n):
-        if (arr[i] != 0):
-            arr[i], arr[j] = arr[j], arr[i]
-            j += 1
+def removeDup(arr):
+    i = 0
+    for j in range(1, len(arr)):
+        if (arr[j] != arr[i]):
+            arr[i+1] = arr[j]
+            i += 1
+    return i + 1
+print(removeDup(arr))
 
-    return arr
-
-print(moveZero(inputArr, len(inputArr)))
