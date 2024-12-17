@@ -28,8 +28,10 @@ def findNumB(arr):
             hashMap[arr[i]] += 1
         else:
             hashMap[arr[i]] = 1
-
-    return hashMap
+            
+    for i in hashMap.items():
+        if (i[1] == 1):
+            return i[0]
 
 print(findNumB(array))
 
