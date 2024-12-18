@@ -54,9 +54,11 @@ def longestSubarrB(arr, k):
         if (prefixSum.get(rem)):
             currentLen = i - prefixSum[rem]
             length = max(currentLen, length)
-        prefixSum[currentSum] = i
-
+        if not(prefixSum.get(currentSum)):
+            prefixSum[currentSum] = i
     return length
 
 print(longestSubarrB(longArrB, 3))
+
+
 
