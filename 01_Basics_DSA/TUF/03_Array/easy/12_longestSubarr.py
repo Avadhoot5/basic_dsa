@@ -38,18 +38,25 @@ def longestSubarrBF2(arr, k):
 
 # better approach 
 
-longArrB =[1, 2, 3, 1, 1, 1, 1, 4, 2, 3]
+longArrB =[1, 2, 3, 0, 0, 1, 1, 1, 4, 2, 3]
 
 def longestSubarrB(arr, k):
     n = len(arr)
     length = 0
+    prefixSum = {}
+    currentSum = 0
 
     for i in range(0, n):
-        currentSum = 0
-        totalSum = 0
-        for j in range(0, i+1):
-            totalSum += arr[j]
+        currentSum += arr[i]    
+        if (currentSum == k):
+            length = max(length, i+1)
+        rem = currentSum - k
+        if (prefixSum.get(rem)):
+            currentLen = i - prefixSum[rem]
+            length = max(currentLen, length)
+        prefixSum[currentSum] = i
 
+    return length
 
 print(longestSubarrB(longArrB, 3))
 
