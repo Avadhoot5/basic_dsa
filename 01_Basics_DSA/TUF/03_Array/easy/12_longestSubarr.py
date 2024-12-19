@@ -36,7 +36,7 @@ def longestSubarrBF2(arr, k):
 
 # print(longestSubarrBF2(longArr, 6))
 
-# better approach 
+# better approach - O(NlogN), SC => O(N)
 
 longArrB =[1, 2, 3, 0, 0, 1, 1, 1, 4, 2, 3]
 
@@ -60,5 +60,26 @@ def longestSubarrB(arr, k):
 
 print(longestSubarrB(longArrB, 3))
 
+# optimal approach.
+
+def longestSubarrO(arr, k):
+    left, right = 0, 0
+    n = len(arr)
+    length = 0
+    currentSum = arr[0]
+
+    while (right < n):
+        while (left <= right and currentSum > k):
+            currentSum -= arr[left]
+            left += 1
+        if (currentSum == k):
+            length = max(length , (right-left) + 1)
+        right += 1
+        if (right < n):
+            currentSum += arr[right]
+
+    return length
+
+print(longestSubarrO(longArrB, 3))
 
 
