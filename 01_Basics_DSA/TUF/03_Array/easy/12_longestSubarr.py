@@ -81,5 +81,3 @@ def longestSubarrO(arr, k):
     return length
 
 print(longestSubarrO(longArrB, 3))
-
-

@@ -32,10 +32,22 @@ def twoSumProblemBF2(arr, k):
 
 # print(twoSumProblemBF2(inputArr, 17))
 
-# def twoSumProblemB(arr, k):
-#     hashMap = {}
+def twoSumProblemB(arr, k):
+    hashMap = {}
+    currentSum = 0
 
-#     # for i in range(0, len(arr)):
-#     #     if (arr[i])
+    for i in range(0, len(arr)):
+        currentSum += arr[i]
+        hashMap[currentSum] = i
+        diff = k - arr[i]
+        if (hashMap.get(diff)):
+            return hashMap[diff]
 
-# print(twoSumProblemB(inputArr, 17))
+print(twoSumProblemB(inputArr, 17))
+
+# optimal approach 
+
+def twoSumProblemO(arr,k):
+    pass
+
+print(twoSumProblemO(inputArr, 17))
