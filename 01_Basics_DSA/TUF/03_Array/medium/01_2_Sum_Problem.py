@@ -32,22 +32,37 @@ def twoSumProblemBF2(arr, k):
 
 # print(twoSumProblemBF2(inputArr, 17))
 
+# Better approach - TC -  O(NlogN). SC -> O(N)
+
 def twoSumProblemB(arr, k):
     hashMap = {}
     currentSum = 0
 
     for i in range(0, len(arr)):
-        currentSum += arr[i]
-        hashMap[currentSum] = i
-        diff = k - arr[i]
-        if (hashMap.get(diff)):
-            return hashMap[diff]
+        value = k - arr[i]
+        if (hashMap.get(value)):
+            return hashMap[value], i
+        hashMap[arr[i]] = i
+    return 'No'
 
-print(twoSumProblemB(inputArr, 17))
+print(twoSumProblemB(inputArr, 19))
 
 # optimal approach 
 
 def twoSumProblemO(arr,k):
-    pass
+    arr.sort()
+    left, right = 0, len(arr)-1
+    for i in range(0, len(arr)):
+        currentSum = arr[left] + arr[right]
+        if (currentSum == k):
+            return 'Yes'
+        elif (currentSum < k):
+            left += 1
+        else:
+            right -= 1
+    return 'No'
 
 print(twoSumProblemO(inputArr, 17))
+
+
+

@@ -10,5 +10,12 @@ def removeDup(arr):
             arr[i+1] = arr[j]
             i += 1
     return i + 1
-print(removeDup(arr))
+
+# print(removeDup(arr))
+
+# Intersection
+
+
+
+
 
