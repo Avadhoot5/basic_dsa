@@ -25,20 +25,6 @@ arr2 = [2, 3, 5, 6, 7, 8]
 longArrB =[1, 2, 3, 0, 0, 1, 1, 1, 4, 2, 3]
 
 def longestSub(arr, k):
-    n = len(arr)
-    left, right = 0, 0
-    length = 0
-    sum = 0
-
-    while (right < n):
-        while (left <= right and sum > k):
-            sum = sum - arr[left]
-            left+=1
-        if (sum == k):
-            length = max(length, right-left + 1)
-        right+=1
-        if (right < n):
-            sum += arr[right]
-    return length
+    pass
 
 print(longestSub(longArrB, 3))
