@@ -37,4 +37,23 @@ def majorityElementB(arr):
 
 # print(majorityElementB(majorityArr))
 
+def majorityElementO(arr):
+    cnt = 0
+    for i in range(0, len(arr)):
+        if (cnt == 0):
+            cnt = 1
+            element = arr[i]
+        else:
+            if (element == arr[i]):
+                cnt += 1
+            else:
+                cnt -= 1
+    maxCount = 0
+    for i in range(0, len(arr)):
+        if (arr[i] == element):
+            maxCount += 1
+    if (maxCount > (len(arr)//2)):
+        return element
+    return -1
 
+print(majorityElementO(majorityArr))
