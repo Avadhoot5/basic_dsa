@@ -22,8 +22,13 @@ def maxSubarraySumB(arr):
 
 # optimal Kadane's algo
 
+import sys
+min_int = -sys.maxsize - 1
+
+inputArrN = [-2, -1]
+
 def maxSubarraySumO(arr):
-    maxSum = 0
+    maxSum = min_int
     n = len(arr)
     currentSum = 0
 
@@ -38,7 +43,7 @@ def maxSubarraySumO(arr):
 
     return maxSum
 
-print(maxSubarraySumO(inputArr))
+print(maxSubarraySumO(inputArrN))
 
 # follow up que - print the subarray 
 
@@ -63,5 +68,5 @@ def maxSubarraySumO2(arr):
 
     return maxSum, arrStart, arrEnd
 
-print(maxSubarraySumO2(inputArr))
+print(maxSubarraySumO2(inputArrN))
 
