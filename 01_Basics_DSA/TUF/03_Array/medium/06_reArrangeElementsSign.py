@@ -25,3 +25,45 @@ print(rearrangeBF(reArr))
 
 # Optimal approach 
 
+def rearrangeO(arr):
+    finalArr = [0] * (len(arr))
+
+    posIdx = 0
+    negIdx = 1
+    for i in range(0, len(arr)):
+        if (arr[i] > 0):
+            finalArr[posIdx] = arr[i]
+            posIdx += 2
+        else:
+            finalArr[negIdx] = arr[i]
+            negIdx += 2
+    return finalArr
+
+print(rearrangeO(reArr))
+
+# variety 2  - no equal N//2.
+
+def rearrangeOV(arr):
+    n = len(arr)
+    pos, neg = [], []
+
+    for i in range(0, n):
+        if (arr[i] < 0):
+            neg.append(arr[i])
+        else:
+            pos.append(arr[i])
+    
+    maxLen = max(len(pos), len(neg))
+
+    for i in range(0, maxLen):
+        arr[i*2] = pos[i]
+        arr[i*2 + 1] = neg[i]
+    
+    idx = (2*maxLen)
+    for i in range(maxLen, n):
+        arr[idx] = pos[i]
+
+    return arr
+
+
+print(rearrangeOV(reArr))
