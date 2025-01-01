@@ -43,27 +43,34 @@ print(rearrangeO(reArr))
 
 # variety 2  - no equal N//2.
 
+reArr2 = [3, 1, -2, -5, 2, -4, 5, 9, 2]
+
 def rearrangeOV(arr):
     n = len(arr)
     pos, neg = [], []
 
     for i in range(0, n):
         if (arr[i] < 0):
-            neg.append(arr[i])
+            neg.append(arr[i])    
         else:
             pos.append(arr[i])
     
-    maxLen = max(len(pos), len(neg))
-
-    for i in range(0, maxLen):
-        arr[i*2] = pos[i]
-        arr[i*2 + 1] = neg[i]
-    
-    idx = (2*maxLen)
-    for i in range(maxLen, n):
-        arr[idx] = pos[i]
-
+    if (len(pos) > len(neg)):
+        for i in range(0, len(neg)):
+            arr[2*i] = pos[i]
+            arr[2*i + 1] = neg[i]
+        idx = 2*len(neg)
+        for i in range(len(neg), len(pos)):
+            arr[idx] = pos[i]
+            idx += 1
+    else:
+        for i in range(0, len(pos)):
+            arr[2*i] = pos[i]
+            arr[2*i + 1] = neg[i]
+        idx = 2*len(pos)
+        for i in range(len(pos), len(neg)):
+            arr[idx] = neg[i]
+            idx += 1
     return arr
 
-
-print(rearrangeOV(reArr))
+print(rearrangeOV(reArr2))
