@@ -2,7 +2,7 @@
 
 reArr = [3, 1, -2, -5, 2, -4]
 
-# TC. O(2N). SC. O(N)
+# TC. O(N + N/2). SC. O(N)
 
 def rearrangeBF(arr):
     posArr = []
@@ -23,7 +23,7 @@ def rearrangeBF(arr):
 
 print(rearrangeBF(reArr))
 
-# Optimal approach 
+# Optimal approach. TC. O(N). SC.O(N)
 
 def rearrangeO(arr):
     finalArr = [0] * (len(arr))
