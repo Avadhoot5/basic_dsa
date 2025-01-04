@@ -13,7 +13,7 @@ def nextPermBF(value):
 # print(nextPermBF(312))
 
 nextArr = [2, 1, 5, 4, 3, 0, 0]
-nextArr2 = [1, 2, 3]
+nextArr2 = [1,3,2]
 
 # Self tried algorithm 
 
@@ -50,12 +50,30 @@ def nextPermOMine(arr):
     
     return finalValue
 
+# print(nextPermOMine(nextArr))
+# print(nextPermOMine(nextArr2))
 
-print(nextPermOMine(nextArr))
-print(nextPermOMine(nextArr2))
+nextArr = [2, 1, 5, 4, 3, 0, 0]
 
 def nextPermO(arr):
-    pass
+    idx = -1
+    n = len(arr)
 
-print(nextPermO(nextArr))
+    for i in range(n-2, -1, -1):
+        if (arr[i] < arr[i+1]):
+            idx = i
+            break
+
+    if (idx == -1):
+        return arr.reverse()
+    else:
+        for i in range(n-1, idx, -1):
+            if (arr[i] > arr[idx]):
+                arr[i], arr[idx] = arr[idx], arr[i]
+                break
+    tempArr = arr[idx+1::]
+    tempArr.reverse()
+    return arr[:idx+1] + tempArr
+
+print(nextPermO(nextArr2))
 
