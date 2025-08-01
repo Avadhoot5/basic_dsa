@@ -19,3 +19,33 @@ def printEncoding(str, ans):
 
 printEncoding('12103', '')
 
+# Alternate method
+
+
+def printEncoding(que, ans):
+    if (len(que) == 0):
+        print(ans)
+        return
+    elif (len(que) == 1):
+        if (int(que) == 0):
+            return
+        else:
+            print(ans + str(encode[int(que)]))
+            return
+    else:
+        char = que[0]
+        roq = que[1:]
+
+        if (int(char) == 0):
+            return
+        else:
+            printEncoding(roq, ans + str(encode[int(char)]))
+
+        char12 = que[:2]
+        roq12 = que[2:]
+
+        if (int(char12) <= 26):
+            printEncoding(roq12, ans + str(encode[int(char12)]))
+
+
+printEncoding('12103', '')
