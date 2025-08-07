@@ -188,12 +188,40 @@ def pattern19(n):
 # pattern19(4)
 
 def pattern20(n):
-    pass
+    # upper part
+    for i in range(1, n+1):
+        for j in range(1, i+1):
+            print('*', end='')
+        print(' ' * (2* (n-i)),end='')
+        for k in range(1, i+1):
+            print('*', end='')
+        print()
+    # lower part
+    for i in range(1, n):
+        for j in range(n-i, 0, -1):
+            print('*', end='')
+        print(' ' * (2*i) , end='')
+        for j in range(n-i, 0, -1):
+            print('*', end='')
+        print()
 
-pattern20(5)
+# pattern20(5)
 
+def finalPattern(n):
+    origN = n
+    n = (2*n)-1
+    for i in range(0, n):
+        for j in range(0, n):
+            top = i
+            down = n - i - 1
+            left = j
+            right = n - j - 1
+            val = min(top, left, down, right)
+            print(origN - val, end='')
 
-
+        print()
+    
+finalPattern(4)
 
 
 
