@@ -66,6 +66,7 @@ def highLow(arr, n):
 
     maxCount, minCount = 0, len(arr)
     maxElement, minElement = 0, 0
+    
     for i in hashArr.items():
         if (i[1] > maxCount):
             maxCount = i[1]
