@@ -124,16 +124,58 @@ def revOne(i, arr):
     arr[i], arr[len(arr)-1-i] = arr[len(arr)-1-i], arr[i]
     return revOne(i+1, arr)
 
-print(revOne(0, inputArr2))
+# print(revOne(0, inputArr2))
 
 # result [9, 5, 6, 2, 3, 4, 1]
 
+# check if a string is palindrome or not.
 
+def palindrome(i, s):
+    if (i >= len(s)//2):
+        return 'Palindrome'
+    if (s[i] != s[len(s)-1-i]):
+        return 'Not Palindrome'
+    else:
+        return palindrome(i+1, s)
 
+# print(palindrome(0,'teset'))
 
+# Leetcode question - 
 
+# Optimal solution
+def palindromeLCO(s):
+    l = 0
+    r = len(s)-1
 
+    def alphaNum(c):
+    # ord function returns the unicode of the specific character.
+        return (ord('A') <= ord(c) <= ord('Z') or 
+            ord('a') <= ord(c) <= ord('z') or
+            ord('0') <= ord(c) <= ord('9'))
+    
+    while (l < r):
+        while (l < r and not alphaNum(s[l])):
+            l += 1
+        while (r > l and not alphaNum(s[r])):
+            r -= 1
+        if (s[l].lower() != s[r].lower()):
+            return False
+        l, r = l+1, r-1
 
+    return True
+
+# result = palindromeLCO('A man, a plan, a canal: Panama')
+# print(result)
+
+# Multiple recursion calls
+def fibo(n):
+    if (n == 0):
+        return 0
+    if (n == 1):
+        return 1
+    return fibo(n-1) + fibo(n-2)
+
+# print(fibo(5))
 
 
 
