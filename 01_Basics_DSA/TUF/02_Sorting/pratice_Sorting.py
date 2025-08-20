@@ -132,8 +132,11 @@ def mergeSort(arr, n):
 # Quick sort
 quickArr = [4, 6, 2, 5, 7, 9, 1, 3]
 
+pivotLastArr1 = [9,2,6,9,1,4,4,3]
 
-def partition(arr, low, high):
+# descending code 
+
+def partitionDesc(arr, low, high):
     pivot = arr[low]
     i = low
     j = high
@@ -149,6 +152,35 @@ def partition(arr, low, high):
     
     return j
 
+def quickSortDesc(arr, low, high):
+    if (low < high):
+        pIndex = partitionDesc(arr, low, high)
+        quickSortDesc(arr, low, pIndex-1)
+        quickSortDesc(arr, pIndex+1, high)
+        return arr
+
+# ans = quickSortDesc(pivotLastArr1, 0, len(pivotLastArr1)-1)
+# print(ans)
+
+# ascending code - using last element pivot
+
+pivotLastArr2 = [9,2,6,9,1,4,4,3]
+
+def partition(arr, low, high):
+    i = low
+    j = high
+    pivot = arr[high]
+
+    while (i < j):
+        while (arr[i] < pivot and i <= high - 1):
+            i += 1
+        while (arr[j] >= pivot and j >= low + 1):
+            j -= 1
+        if (i < j):
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[high], arr[i] = arr[i], arr[high]
+    return i
+
 def quickSort(arr, low, high):
     if (low < high):
         pIndex = partition(arr, low, high)
@@ -156,16 +188,35 @@ def quickSort(arr, low, high):
         quickSort(arr, pIndex+1, high)
         return arr
 
-ans = quickSort(quickArr, 0, len(quickArr)-1)
-print(ans)
-
-
+# ans = quickSort(pivotLastArr2, 0, len(pivotLastArr2)-1)
+# print(ans)
 
 # Recursive Bubble Sort Algorithm
 
+bubbleArrT = [13, 46, 24, 52, 20, 9]
+
+def recBubble(arr, n):
+    if (n == 1):
+        return arr
+    for i in range(0, n-1):
+        if (arr[i] > arr[i+1]):
+            arr[i+1], arr[i] = arr[i], arr[i+1]
+    return recBubble(arr, n-1)
+
+# print(recBubble(bubbleArrT, len(bubbleArrT)))
 
 # Recursive Insertion Sort Algorithm
 
+recinsertArr = [13, 46, 24, 52, 20, 9]
 
+def recInsert(arr, n, i):
+    if (i == n):
+        return arr
+    for j in range(i, 0, -1):
+        if (arr[j-1] > arr[j]):
+            arr[j-1], arr[j] = arr[j], arr[j-1]
 
+    return recInsert(arr, n, i+1)
+
+# print(recInsert(recinsertArr, len(recinsertArr), 0))
 
