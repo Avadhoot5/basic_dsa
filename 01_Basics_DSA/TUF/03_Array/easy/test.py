@@ -66,7 +66,9 @@ dupArray = [1, 2, 3, 3, 4, 5, 5, 7, 8, 8]
 def removeDuplicatesBF1(arr):
     pass
 
-removeDuplicatesBF1(dupArray)
+# removeDuplicatesBF1(dupArray)
+
+
 
 
 
