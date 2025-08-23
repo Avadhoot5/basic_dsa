@@ -153,16 +153,82 @@ def rotateArrByDBF(arr, n, d):
 
     return arr
 
-print(rotateArrByDBF(rotateArr, len(rotateArr), 3))
-
+# print(rotateArrByDBF(rotateArr, len(rotateArr), 3))
 
 # optimal solution
 
+rotateArrO = [1,2,19,3,88,56,91,14,27,65]
 
+def rotateArrByDO(arr, n, d):
+    d = d % n
+    arr[:d] = reversed(arr[:d])
+    arr[d:] = reversed(arr[d:])
+    arr.reverse()
+    return arr
 
-rotateArrNew = [1,2,19,3,88,56,91,14,27,65]
+# print(rotateArrByDO(rotateArrO, len(rotateArrO), 3))
 
 # - without using STL
+
+rotateArrO2 = [1,2,19,3,88,56,91,14,27,65]
+
+# ans - [3, 88, 56, 91, 14, 27, 65, 1, 2, 19]
+
+def rev(arr, start, end):
+    while (start < end):
+        arr[start], arr[end] = arr[end], arr[start]
+        start += 1
+        end -= 1
+    return arr
+
+def rotateArrByDO1(arr, n, d):
+    d = d % n
+    rev(arr, 0, d-1)
+    rev(arr, d, n-1)
+    return rev(arr, 0, n-1)
+
+# print(rotateArrByDO1(rotateArrO2,  len(rotateArrO2), 3))
+
+# Move Zeros to End 
+
+# brute force - TC => O(N) + O(X) + O(N-X) => O(2N)
+# SC => O(N) 
+
+zeroArr = [1, 0, 2, 3, 2, 0, 0, 4, 5, 1]
+
+def moveZeroBF(arr, n):
+    temp = []
+
+    for i in range(n):
+        if not(arr[i] == 0):
+            temp.append(arr[i])
+    
+    for i in range(0, len(temp)):
+        arr[i] = temp[i]
+        
+    for i in range(len(temp), n):
+        arr[i] = 0
+    return arr
+
+# print(moveZeroBF(zeroArr, len(zeroArr)))
+
+def moveZeroO(arr, n):
+    j = -1
+    for i in range(n):
+        if (arr[i] == 0):
+            j = i
+            break
+
+    for i in range(j+1, n):
+        if (arr[i] != 0):
+            arr[i], arr[j] = arr[j], arr[i]
+            j += 1
+
+    return arr
+
+# print(moveZeroO(zeroArr, len(zeroArr)))
+
+
 
 
 
