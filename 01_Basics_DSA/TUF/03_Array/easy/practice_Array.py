@@ -228,10 +228,106 @@ def moveZeroO(arr, n):
 
 # print(moveZeroO(zeroArr, len(zeroArr)))
 
+# Linear Search
 
+linearArr = [42,7,19,3,88,56,91,14,27,65]
 
+def findElement(arr, k):
+    for i in range(len(arr)):
+        if (arr[i] == k):
+            return i
+    return -1
 
+# print(findElement(linearArr, 14))
 
+# Union of two sorted arrays.
 
+arrU1 = [1, 2, 2, 3, 4, 5, 6]
+arrU2 = [2, 3, 4, 4, 7, 8]
+
+# brute force approach 
+
+def unionSortBF(arr1, arr2):
+    unionSet = set()
+    temp = []
+    for i in arr1:
+        unionSet.add(i)
+
+    for i in arr2:
+        unionSet.add(i)
+
+    for i in unionSet:
+        temp.append(i)
+    return temp
+
+# print(unionSortBF(arrU1, arrU2))
+
+def unionSortO(a, b):
+    temp = []
+    i, j = 0, 0
+    m = len(a)
+    n = len(b)
+
+    while (i < m and j < n):
+        if (a[i] <= b[j]):
+            if (len(temp) == 0 or temp[-1] != a[i]):
+                temp.append(a[i])
+            i += 1
+        else:
+            if (len(temp) == 0 or temp[-1] != b[j]):
+                temp.append(b[j])
+            j += 1
+    while (i < m):
+        if (len(temp) == 0 or temp[-1] != a[i]):
+            temp.append(a[i])
+        i += 1
+    while (j < n):
+        if (len(temp) == 0) or temp[-1] != b[j]:
+            temp.append(b[j])
+        j += 1
+    return temp
+
+# print(unionSortO(arrU1, arrU2))
+
+# Intersection of Sorted Arrays 
+
+arrI1 = [1, 2, 2, 3, 3, 4, 5, 6]
+arrI2 = [2, 3, 3, 5, 6, 7, 8]
+
+def intersectionBF1(a, b):
+    visitedArr = [0] * len(b)
+    temp = []
+
+    for i in range(len(a)):
+        for j in range(len(b)):
+            if (a[i] == b[j] and visitedArr[j] == 0):
+                temp.append(b[j])
+                visitedArr[j] = 1
+            if (b[j] > a[i]):
+                break
+    return temp
+
+# print(intersectionBF1(arrI1, arrI2))
+
+def intersectionO(a, b):
+    i, j = 0, 0
+    m = len(a)
+    n = len(b)
+    temp = []
+
+    while (i < m and j < n):
+        if (a[i] < b[j]):
+            i += 1
+        elif (b[j] < a[i]):
+            j += 1
+        else:
+            temp.append(a[i])
+            i += 1
+            j += 1
+    return temp
+
+# print(intersectionO(arrI1, arrI2))
+
+# missing number in an array
 
 
