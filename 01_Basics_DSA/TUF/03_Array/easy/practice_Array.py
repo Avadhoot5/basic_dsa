@@ -1,7 +1,7 @@
 # arrays in python
 
 # arr = [0] * 6
-# print(arr)
+# pri`nt(arr)
 
 # 1. Largest Element in Array
 
@@ -329,5 +329,168 @@ def intersectionO(a, b):
 # print(intersectionO(arrI1, arrI2))
 
 # missing number in an array
+
+missNum = [9,6,4,2,3,5,7,1]
+
+def missingNumBF1(arr):
+    n = len(arr)
+
+    for i in range(1, n+1):
+        flag = 0
+        for j in range(n):
+            if (arr[j] == i):
+                flag = 1
+        if (flag == 0):
+            return i
+
+# print(missingNumBF1(missNum))
+
+# Optimal approach. TC -> O(N+M). SC -> O(N)
+# hash arr approach
+
+def missingNumBF2(arr):
+    n = len(arr)
+    hashArr = [0] * (n+2)
+
+    for i in range(0, n):
+        hashArr[arr[i]] = 1
+
+    for j in range(1, len(hashArr)):
+        if (hashArr[j] == 0):
+            return j
+
+# print(missingNumBF2(missNum))
+
+# optimal method - sum & XOR
+
+missNumO = [1,2,3,4,6,7,8]
+
+def missingNumO1(arr):
+    n = len(arr) + 1
+    sum = (n*(n+1)//2)
+    total = 0
+
+    for i in range(len(arr)):
+        total += arr[i]
+
+    return (sum - total)
+
+# print(missingNumO1(missNumO))
+
+def missingNumO2(arr, n):
+    xor1, xor2 = 0, 0
+
+    for i in range(0, len(arr)):
+        xor1 = xor1 ^ arr[i]
+        xor2 = xor2 ^ (i+1)
+    xor2 = xor2 ^ n
+    return xor1^ xor2
+
+# print(missingNumO2(missNumO, len(missNumO)+1))
+
+# Max Consecutive number of 1's
+
+oneArr = [1, 1, 0, 1, 1, 1, 0, 1, 1]
+
+def maxOnes(arr):
+    n = len(arr)
+    ctr, total = 0, 0
+
+    for i in range(n):
+        if (arr[i] == 1):
+            ctr += 1
+        else:
+            ctr = 0
+        if (ctr > total):
+            total = ctr
+
+    return total
+
+# print(maxOnes(oneArr))
+
+# Find the number that appears once, and other numbers twice.
+
+# brute force.
+
+# TC. O(N*N). SC => O(1)
+
+findArr = [4,1,2,1,2]
+findNumArr = [1, 1, 2, 3, 3, 4, 4]
+
+# O(N*N)
+
+def findNumBF1(arr):
+    n = len(arr)
+
+    for i in range(n):
+        flag = 0
+        for j in range(n):
+            if (arr[i] == arr[j]):
+                flag += 1
+        if (flag == 1):
+            return arr[i]
+
+    return -1
+
+# print(findNumBF1(findArr))
+# print(findNumBF1(findNumArr))
+
+def findNumBetter(arr):
+    hashMap = {}
+
+    for i in arr:
+        hashMap[i] = hashMap.get(i, 0) + 1
+
+    for i in arr:
+        if (hashMap[i] == 1):
+            return i
+
+    return -1
+
+# print(findNumBetter(findArr))
+# print(findNumBetter(findNumArr))
+
+def findNumO(arr):
+    xor1 = 0
+    n = len(arr)
+
+    for i in range(n):
+        xor1 = xor1 ^ arr[i]
+
+    return xor1
+
+# print(findNumO(findArr))
+# print(findNumO(findNumArr))
+
+# Longest subarray with given sum K(positives)
+
+longArr = [1, 2, 3, 1, 1, 1, 1, 4, 2, 3]
+
+def longestSubarrBF1(arr, k):
+    n = len(arr)
+    maxSize = 0
+
+    for i in range(0, n):
+        currentSum = 0
+        for j in range(i, n):
+            currentSum += arr[j]
+            if (currentSum == k):
+                maxSize = max(maxSize, (j-i)+1)
+            if (currentSum > k):
+                break
+    return maxSize
+
+# print(longestSubarrBF1(longArr, 3))
+
+def longestSubarrBetter(arr, k):
+    pass
+
+
+# print(longestSubarrBetter(longArr, 3))
+
+
+
+
+
 
 
