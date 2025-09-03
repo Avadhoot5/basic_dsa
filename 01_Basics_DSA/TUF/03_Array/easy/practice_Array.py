@@ -482,15 +482,52 @@ def longestSubarrBF1(arr, k):
 
 # print(longestSubarrBF1(longArr, 3))
 
-def longestSubarrBetter(arr, k):
-    pass
+# hashMap - optimal for 0, +ve, -ves
 
+def longestSubarrBetter(arr, k):
+    n = len(arr)
+    hashMap = {}
+    maxLen = 0
+    prefixSum  = 0
+
+    for i in range(0, n):
+        prefixSum += arr[i]
+
+        if (prefixSum == k):
+            maxLen = max(maxLen, i+1)
+
+        rem = prefixSum - k
+
+        if (hashMap.get(rem)):
+            currentLen = i - hashMap[rem]
+            maxLen = max(maxLen, currentLen)
+
+        if not(hashMap.get(prefixSum)):
+            hashMap[prefixSum] = i
+
+    return maxLen
 
 # print(longestSubarrBetter(longArr, 3))
 
+# 2 pointer - optimal for +ve's, and 0s
 
+def longestSubarrO(arr, k):
+    l, r = 0, 0
+    n = len(arr)
+    maxLen = 0
+    currentSum = arr[0]
 
+    while (r < n):
+        while (l <= r and currentSum > k):
+            currentSum -= arr[l]
+            l += 1
+        if (currentSum == k):
+            maxLen = max(maxLen, (r-l)+1)
+        r += 1
+        if (r < n):
+            currentSum += arr[r]
 
+    return maxLen
 
-
+# print(longestSubarrO(longArr, 4))
 
