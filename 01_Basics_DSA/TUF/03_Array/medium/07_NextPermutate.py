@@ -39,21 +39,21 @@ def nextPermOMine(arr):
 
         # adding the elements till the breakpoint
         finalValue += currentValue[:breakPoint+1]
-        print(finalValue)
+        # print(finalValue)
         subList = currentValue[breakPoint+1:]
         subList.sort()
         finalValue += subList
-        print(finalValue)
+        # print(finalValue)
 
     else:
         arr.sort()
     
     return finalValue
 
-# print(nextPermOMine(nextArr))
-# print(nextPermOMine(nextArr2))
+print(nextPermOMine(nextArr))
+print(nextPermOMine(nextArr2))
 
-nextArr = [2, 1, 5, 4, 3, 0, 0]
+nextArrN = [2, 1, 5, 4, 3, 0, 0]
 
 def nextPermO(arr):
     idx = -1
@@ -75,5 +75,5 @@ def nextPermO(arr):
     tempArr.reverse()
     return arr[:idx+1] + tempArr
 
-print(nextPermO(nextArr2))
+print(nextPermO(nextArrN))
 

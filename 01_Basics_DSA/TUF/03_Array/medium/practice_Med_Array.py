@@ -226,7 +226,7 @@ def maxSubarraySumO2(arr):
 
     return [startIdx, endIdx]
 
-print(maxSubarraySumO2(maxSubArr))
+# print(maxSubarraySumO2(maxSubArr))
 
 # stock buy and sell
 
@@ -258,10 +258,150 @@ reArr = [3, 1, -2, -5, 2, -4]
 # TC. O(N + N/2). SC. O(N)
 
 def reArrangeBF(arr):
-    pass
+    n = len(arr)
+    posArr = []
+    negArr = []
+
+    for i in range(n):
+        if (arr[i] > 0):
+            posArr.append(arr[i])
+        else:
+            negArr.append(arr[i])
+    arr = []
+
+    for i in range(n//2):
+        arr.append(posArr[i])
+        arr.append(negArr[i])
+
+    return arr
+
+# print(reArrangeBF(reArr))
+
+def reArrangeBetter(arr):
+    n = len(arr)
+    temp = [0] * n
+
+    pIdex, nIdx = 0, 1
+
+    for i in range(n):
+        if (arr[i] >= 0):
+            temp[pIdex] = arr[i]
+            pIdex += 2
+        else:
+            temp[nIdx] = arr[i]
+            nIdx += 2
+
+    return temp
+
+# print(reArrangeBetter(reArr))
+
+# variety 2  - no equal N//2.
+
+reArr2 = [3, 1, -2, -5, 2, -4, 5, 9, 2]
+
+def reArrangeO(arr):
+    n = len(arr)
+    pos, neg = [], []
+
+    for i in range(n):
+        if (arr[i] >= 0):
+            pos.append(arr[i])
+        else:
+            neg.append(arr[i])
+
+    if (len(pos) > len(neg)):
+        for i in range(0, len(neg)):
+            arr[2*i] = pos[i]
+            arr[2*i+1] = neg[i]
+        nextIdx = 2 * (len(neg))
+        for i in range(len(neg), len(pos)):
+            arr[nextIdx] = pos[i]
+            nextIdx += 1
+    else:
+        for i in range(0, len(pos)):
+            arr[2*i] = pos[i]
+            arr[2*i+1] = neg[i]
+        nextIdx = 2 * (len(pos))
+        for i in range(len(pos), len(neg)):
+            arr[nextIdx] = neg[i]
+            nextIdx += 1
+    return arr
+
+# print(reArrangeO(reArr2))
+
+# Next Permutation 
+
+nextArr = [2, 1, 5, 4, 3, 0, 0]
+# nextArr2 = [1,3,2]
 
 
-print(reArrangeBF(reArr))
+def nextPermO(arr):
+    n = len(arr)
+    idx = -1
+
+    for i in range(n-2, -1, -1):
+        if (arr[i] < arr[i+1]):
+            idx = i
+            break
+    if (idx == -1):
+        arr.reverse()
+        return arr
+    
+    for i in range(n-1, idx, -1):
+        if (arr[i] > arr[idx]):
+            arr[i], arr[idx] = arr[idx], arr[i]
+            break
+    arr[idx+1:] = reversed(arr[idx+1:])
+    return list(arr)
+
+# print(nextPermO(nextArr))
+
+# Leaders in an Array
+
+# brute force 
+
+# TC. O(N*N). SC. O(N)
+
+leaderArr = [10, 22, 12, 3, 0, 6]
+
+def leadersInArrBF(arr):
+    n = len(arr)
+    ansArr = []
+
+    for i in range(n):
+        isLeader = True
+        for j in range(i+1, n):
+            if (arr[j] > arr[i]):
+                isLeader = False
+                break
+        if (isLeader):
+            ansArr.append(arr[i])
+    return ansArr
+
+# print(leadersInArrBF(leaderArr))
+
+def leadersInArrO(arr):
+    n = len(arr)
+    result = []
+    maxElement = 0
+
+    for i in range(n-1, -1, -1):
+        if (arr[i] > maxElement):
+            result.append(arr[i])
+            maxElement = arr[i]
+
+    return result
+
+print(leadersInArrO(leaderArr))
+
+
+
+
+
+
+
+
+
 
 
 
