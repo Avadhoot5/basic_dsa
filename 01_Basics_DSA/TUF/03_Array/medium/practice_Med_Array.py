@@ -392,12 +392,137 @@ def leadersInArrO(arr):
 
     return result
 
-print(leadersInArrO(leaderArr))
+# print(leadersInArrO(leaderArr))
+
+# Longest Consecutive Sequence 
+
+nums = [0,3,7,2,5,8,4,6,0,1]
+nums2 = [102,4,100,1,101,1,3,2]
+
+# brute force approach.
+
+def linearSearch(a, x):
+    for i in range(len(a)):
+        if (a[i] == x):
+            return True
+    return False
+
+def longestSqBF1(arr):
+    n = len(arr)
+    longest = 1
+
+    for i in range(n):
+        x = arr[i]
+        count = 0
+        while (linearSearch(arr, x) == True):
+            count += 1
+            x += 1
+        longest = max(count, longest)
+    return longest
+
+# print(longestSqBF1(nums2))
+
+import sys
+min_int = -sys.maxsize - 1
+
+def longestSqB(arr):
+    arr.sort()
+    n = len(arr)
+    longest = 1
+    lastSmaller = min_int
+    countCurrent = 0
+
+    for i in range(n):
+        if (arr[i]-1 == lastSmaller):
+            countCurrent += 1
+            lastSmaller = arr[i]
+        elif (arr[i] != lastSmaller):
+            countCurrent = 1
+            lastSmaller = arr[i]
+
+        longest = max(longest, countCurrent)
+
+    return longest
+
+# print(longestSqB(nums2))
+
+def longestSqO(arr):
+    newSet = set(arr)
+    count = 0
+    longest = 1
+
+    for i in newSet:
+        if (i-1 not in newSet):
+            x = i
+            count = 1
+            while (x + 1 in newSet):
+                count += 1
+                x += 1
+            longest = max(longest, count)
+
+    return longest
+
+# print(longestSqO(nums2))
+
+# Set Matrix Zeroes | O(1) Space Approach
+
+# Brute force 
+# 1.) traverse in the matrix and search for 0s. and mark the respective col and row elements with -1.
+# 2.) Again loop through the matrix and convert the -1 to 0s
+
+# TC. O(N*M) + O(N+M) + O(N*M)
+
+matrix = [[1,1,1],[1,0,1],[1,1,1]]
+
+def setMatrixZeroBF(matrix, n, m):
+
+    def markRow(matrix, n, m, i):
+        for j in range(0, m):
+            if (matrix[i][j] != 0):
+                matrix[i][j] = -1
+
+    def markCol(matrix, n, m, j):
+        for i in range(0, n):
+            if (matrix[i][j] != 0):
+                matrix[i][j] = -1
+
+    for i in range(0, n):
+        for j in range(0, m):
+            if (matrix[i][j] == 0):
+                markRow(matrix, n, m, i)
+                markCol(matrix, n, m, j)
+
+    for i in range(0, n):
+        for j in range(0, m):
+            if (matrix[i][j] == -1):
+                matrix[i][j] = 0
+
+    return matrix
+
+ans = setMatrixZeroBF(matrix, len(matrix), len(matrix[0]))
+print(ans)
 
 
+matrixB = [[1,1,1],[1,0,1],[1,1,1]]
 
+def setMatrixZeroB(matrix, n , m):
+    markRow = [0] * n
+    markCol = [0] * m
 
+    for i in range(n):
+        for j in range(m):
+            if (matrix[i][j] == 0):
+                markRow[i] = 1
+                markCol[j] = 1
 
+    for i in range(n):
+        for j in range(m):
+            if (markRow[i] or markCol[j]):
+                matrix[i][j] = 0
+    
+    return matrix
+
+print(setMatrixZeroB(matrixB, len(matrixB), len(matrixB[0])))
 
 
 
