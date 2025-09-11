@@ -506,7 +506,7 @@ print(ans)
 matrixB = [[1,1,1],[1,0,1],[1,1,1]]
 
 def setMatrixZeroB(matrix, n , m):
-    markRow = [0] * n
+    markRow = [0] * n 
     markCol = [0] * m
 
     for i in range(n):
@@ -514,7 +514,6 @@ def setMatrixZeroB(matrix, n , m):
             if (matrix[i][j] == 0):
                 markRow[i] = 1
                 markCol[j] = 1
-
     for i in range(n):
         for j in range(m):
             if (markRow[i] or markCol[j]):
@@ -524,8 +523,40 @@ def setMatrixZeroB(matrix, n , m):
 
 print(setMatrixZeroB(matrixB, len(matrixB), len(matrixB[0])))
 
+matrixO = [[1,1,1],[1,0,1],[1,1,1]]
 
+def setMatrixZeroO(matrix, n, m):
+    
+    # column[m] -> matrix[0][..]
+    # rows[n] -> matrix[..][0]
 
+    col0 = 1
+
+    for i in range(n):
+        for j in range(m):
+            if (matrix[i][j] == 0):
+                # mark column
+                if (j != 0):
+                    matrix[0][j] = 0
+                else:
+                    col0 = 0
+                # mark row
+                matrix[i][0] = 0
+    
+    for i in range(1, n):
+        for j in range(1, m):
+            if (matrix[0][j] == 0 or matrix[i][0] == 0):
+                matrix[i][j] = 0
+    if (matrix[0][0] == 0):
+        for j in range(m):
+            matrix[0][j] = 0
+    if (col0 == 0):
+        for i in range(n):
+            matrix[i][0]
+
+    return matrix
+
+print(setMatrixZeroO(matrixO, len(matrixO), len(matrixO[0])))
 
 
 
