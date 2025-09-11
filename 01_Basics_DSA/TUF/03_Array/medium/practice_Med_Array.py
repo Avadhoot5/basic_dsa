@@ -499,8 +499,8 @@ def setMatrixZeroBF(matrix, n, m):
 
     return matrix
 
-ans = setMatrixZeroBF(matrix, len(matrix), len(matrix[0]))
-print(ans)
+# ans = setMatrixZeroBF(matrix, len(matrix), len(matrix[0]))
+# print(ans)
 
 
 matrixB = [[1,1,1],[1,0,1],[1,1,1]]
@@ -521,7 +521,7 @@ def setMatrixZeroB(matrix, n , m):
     
     return matrix
 
-print(setMatrixZeroB(matrixB, len(matrixB), len(matrixB[0])))
+# print(setMatrixZeroB(matrixB, len(matrixB), len(matrixB[0])))
 
 matrixO = [[1,1,1],[1,0,1],[1,1,1]]
 
@@ -556,7 +556,68 @@ def setMatrixZeroO(matrix, n, m):
 
     return matrix
 
-print(setMatrixZeroO(matrixO, len(matrixO), len(matrixO[0])))
+# print(setMatrixZeroO(matrixO, len(matrixO), len(matrixO[0])))
+
+
+# Rotate Matrix/Image by 90 Degrees
+
+matrixRotate = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+matrixRotate2 = [[1,2,3],[4,5,6],[7,8,9]]
+
+# TC. O(N*N). SC. O(N*N)
+
+# 123    741
+# 456 -> 852
+# 789    963
+
+def rotateMatrixBF1(matrix, n):
+    final = []
+
+    for i in range(0, n):
+        temp = []
+        for j in range(n-1, -1, -1):
+            temp.append(matrix[j][i])
+        final.append(temp)
+
+    return final
+
+# print(rotateMatrixBF1(matrixRotate2, len(matrixRotate2)))
+
+
+def rotateMatrixO(matrix, n):
+
+    for i in range(n-1):
+        for j in range(i+1, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+    for i in range(n):
+        matrix[i].reverse()
+
+    return matrix
+
+# print(rotateMatrixO(matrixRotate2, len(matrixRotate2)))
+
+# Spiral Traversal of a Matrix | Spiral Matrix
+
+# implementation logic
+# code clean check
+
+# TC. O(N*M). SC. O(N)
+
+matrix = [[1,2,3],[4,5,6],[7,8,9]]
+
+# 1 2 3
+# 4 5 6
+# 7 8 9
+
+
+
+
+
+
+
+
+
 
 
 
