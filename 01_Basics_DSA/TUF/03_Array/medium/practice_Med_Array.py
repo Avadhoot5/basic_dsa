@@ -604,21 +604,71 @@ def rotateMatrixO(matrix, n):
 
 # TC. O(N*M). SC. O(N)
 
-matrix = [[1,2,3],[4,5,6],[7,8,9]]
+spiralMatrix = [[1,2,3],[4,5,6],[7,8,9]]
 
 # 1 2 3
 # 4 5 6
 # 7 8 9
 
+def spiralTrav(matrix):
+    n = len(matrix)
+    m = len(matrix[0])
 
+    top, left = 0, 0
+    right = m-1
+    bottom = n-1
+    result = []
+    
+    while (left <= right and top <= bottom):
 
+        for i in range(left, right+1):
+            result.append(matrix[top][i])
+        top += 1
+        for i in range(top, bottom+1):
+            result.append(matrix[i][right])
+        right -= 1
+        if (top <= bottom):
+            for i in range(right, left-1, -1):
+                result.append(matrix[bottom][i])
+            bottom -= 1
+        if (left <= right):
+            for i in range(bottom, top-1, -1):
+                result.append(matrix[i][left])
+            left += 1
 
+    return result
 
+# print(spiralTrav(spiralMatrix))
 
+# Output: [1,2,3,6,9,8,7,4,5]
 
+# Count Subarray sum Equals K 
 
+longArr = [1, 2, 3, 1, 1, 1, 1, 4, 2, 3]
+longArr2 = [1, 2, 3, -3, 1, 1, 1, 4, 2, -3]
 
+# Brute force. TC. O(N*N). SC. O(1)
 
+def longSubB(arr, k):
+    count = 0
+    n = len(arr)
+
+    for i in range(n):
+        currentSum = 0
+        for j in range(i, n):
+            currentSum += arr[j]
+            if (currentSum == k):
+                count += 1
+    return count
+            
+print(longSubB(longArr2, 3))
+
+def longSubO(arr, k):
+    n = len(arr)
+    hashMap = {}
+    
+
+print(longSubO(longArr2, 3))
 
 
 

@@ -21,7 +21,7 @@ def spiralTrav(matrix):
     bottom = n - 1
     result = []
 
-    while (top <= bottom and right <= left):
+    while (top <= bottom and left <= right):
         for i in range(left, right+1):
             result.append(matrix[top][i])
         top += 1
@@ -37,7 +37,7 @@ def spiralTrav(matrix):
                 result.append(matrix[i][left])
             left += 1
 
-    return matrix
+    return result
 
 print(spiralTrav(matrix))
 
