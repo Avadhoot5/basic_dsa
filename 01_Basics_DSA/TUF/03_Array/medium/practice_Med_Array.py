@@ -666,10 +666,23 @@ print(longSubB(longArr2, 3))
 def longSubO(arr, k):
     n = len(arr)
     hashMap = {}
-    
+    hashMap[0] = 1
+    count = 0
+    preSum = 0
+
+    for i in range(n):
+        preSum += arr[i]
+        rem = preSum - k
+        if (rem in hashMap):
+            count += hashMap[rem]
+        if (preSum in hashMap):
+            hashMap[preSum] += 1
+        else:
+            hashMap[preSum] = 1
+
+    return count
 
 print(longSubO(longArr2, 3))
-
 
 
 
