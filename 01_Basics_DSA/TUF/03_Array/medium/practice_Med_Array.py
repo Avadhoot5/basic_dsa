@@ -684,12 +684,3 @@ def longSubO(arr, k):
 
 print(longSubO(longArr2, 3))
 
-
-
-
-mergeArr = [3,4,1,6,2,5,7]
-
-def mS(arr, low, mid, high):
-    pass
-
-
