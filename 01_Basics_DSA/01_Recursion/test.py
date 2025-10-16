@@ -123,27 +123,55 @@ def firstOccr(arr, i, element):
     else:
         return firstOccr(arr,i+1, element)
 
-print(firstOccr(firstArr, 0, 8))
-
+# print(firstOccr(firstArr, 0, 8))
 
 # Last index ques.
 lastArr = [2,5,7,8,2,6,8,1]
 
 def lastOccr(arr, i, element):
     if (i == len(arr)): return -1
-    value = lastOccr(arr, i+1,element)
+    value = lastOccr(arr, i+1, element)
     if (value == -1):
-        if (element == arr[i]):
+        if (arr[i] == element):
             return i
         else:
             return -1
-    return value
+    else:
+        return value
 
 # print(lastOccr(lastArr, 0, 8))
 
 # return all indices of an element in an array.
 
 allArr = [2,5,7,8,2,6,9,2,8,1]
+
+def allOccr(arr, i, element):
+    if (i == len(arr)):
+        return []
+    if (arr[i] == element):
+        return [i] + allOccr(arr, i+1, element)
+    else:
+        return allOccr(arr, i+1, element)
+
+# print(allOccr(allArr, 0, 8))
+
+# alt approach
+
+def allOccrAlt(arr, i, element, fsf):
+    if (i == len(arr)):
+        iarr = [0] * fsf
+        return iarr
+    if (arr[i] == element):
+        iarr = allOccrAlt(arr, i+1, element, fsf + 1)
+        iarr[fsf] =  i
+        return iarr
+    else:
+        iarr = allOccrAlt(arr, i+1, element, fsf)
+        return iarr
+
+print(allOccrAlt(allArr, 0, 8, 0))
+
+
 
 
 
