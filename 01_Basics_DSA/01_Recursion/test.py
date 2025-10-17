@@ -169,9 +169,33 @@ def allOccrAlt(arr, i, element, fsf):
         iarr = allOccrAlt(arr, i+1, element, fsf)
         return iarr
 
-print(allOccrAlt(allArr, 0, 8, 0))
+# print(allOccrAlt(allArr, 0, 8, 0))
 
 
+# # Get Subsequence - Introduction to Arraylists
+
+# string methods
+
+
+# subsequence of a given string
+
+# abc -> result from bc. 
+
+def subsequence_str(str):
+    if (len(str) == 0):
+        return ['']
+    ch = str[0]
+    rem_str = str[1:]
+    ross = subsequence_str(rem_str)
+    temp = []
+    for i in ross:
+        temp.append(i)
+    for i in ross:
+        temp.append(ch + i)
+
+    return temp
+
+print(subsequence_str('abc'))
 
 
 
