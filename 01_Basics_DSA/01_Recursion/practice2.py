@@ -1,5 +1,5 @@
 
-# Print Decreasing using version
+# Print Decreasing using Recursion
 
 def recDec(n):
     if (n == 0): return
