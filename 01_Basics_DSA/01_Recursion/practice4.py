@@ -130,3 +130,31 @@ def allIndices(arr, i, element):
 
 # ans = allIndices(inputArr, 0, 2)
 # print(ans)
+
+# Get Subsequence - Introduction to Arraylists
+
+# subsequence of a given string
+
+# abc -> result from bc. 
+
+def recStr(str):
+    if (len(str) == 0): return ['']
+
+    ch = str[0]
+    ros = str[1:]
+    rros = recStr(ros)
+    mres = []
+    for i in rros:
+        mres.append('' + i)
+    for i in rros:
+        mres.append(ch + i)
+    return mres
+
+print(recStr('abc'))
+
+# get keypad combinations
+
+# Leetcode 17. 
+# https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+
+
