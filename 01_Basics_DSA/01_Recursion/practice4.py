@@ -150,11 +150,68 @@ def recStr(str):
         mres.append(ch + i)
     return mres
 
-print(recStr('abc'))
+# print(recStr('abc'))
 
 # get keypad combinations
 
 # Leetcode 17. 
 # https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+
+def letterCombinations(digit):
+
+    if (len(digit) == 0):
+        return ['']
+
+    def show_letter(num):
+        digit_to_letters = {
+            '2': 'abc',
+            '3': 'def',
+            '4': 'ghi',
+            '5': 'jkl',
+            '6': 'mno',
+            '7': 'pqrs',
+            '8': 'tuv',
+            '9': 'wxyz',
+        }
+        return digit_to_letters[num]
+    
+    chr = digit[0]
+    rnum = digit[1:]
+    mres = []
+    rrnum = letterCombinations(rnum)
+    chr_text = show_letter(chr)
+    for i in rrnum:
+        for j in chr_text:
+            mres.append(j + i)
+    return mres
+
+# ans = letterCombinations('67')
+
+# print(ans)
+
+# print(len(ans))
+
+# Get Stairs Path - Question | Recursion
+
+def getStairs(n):
+    if (n < 0): return []
+    if (n == 0): return ['']
+    
+    jump1 = getStairs(n-1)
+    jump2 = getStairs(n-2)
+    jump3 = getStairs(n-3)
+
+    mres = []
+
+    for i in jump1:
+        mres.append('1' + str(i))
+    for i in jump2:
+        mres.append('2' + str(i))
+    for i in jump3:
+        mres.append('3' + str(i))
+    return mres
+
+ans = getStairs(4)
+print(ans)
 
 
