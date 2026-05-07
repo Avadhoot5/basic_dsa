@@ -8,13 +8,13 @@ def getMazePaths(sr, sc, dr, dc):
     paths = []
 
     for ms in range(1, (dr-sr)+1):
-        hPath = getMazePaths(sr+ms, sc, dr,dc)
-        for prevH in hPath:
+        vPath = getMazePaths(sr+ms, sc, dr,dc)
+        for prevH in vPath:
             paths.append('h' + str(ms) + prevH)
 
     for ms in range(1, (dc-sc)+1):
-        vPath = getMazePaths(sr, sc+ms, dr,dc)
-        for prevV in vPath:
+        hPath = getMazePaths(sr, sc+ms, dr,dc)
+        for prevV in hPath:
             paths.append('v' + str(ms) + prevV)
 
     for ms in range(1, (dc-sc)+1 and (dr-sr)+1):

@@ -211,7 +211,65 @@ def getStairs(n):
         mres.append('3' + str(i))
     return mres
 
-ans = getStairs(4)
+# ans = getStairs(4)
+# print(ans)
+
+# Get maze paths 
+
+def getMazePath(sr, sc, dr, dc):
+
+    if (sr == dr and sc == dc):
+        return ['']
+    
+    hPath = []
+    vPath = []
+
+    if (sc < dc):
+        hPath = getMazePath(sr, sc+1, dr, dc)
+    if (sr < dr):
+        vPath = getMazePath(sr+1, sc, dr, dc)
+
+    paths = []
+
+    for i in hPath:
+        paths.append('h' + i)
+        
+    for i in vPath:
+        paths.append('v' + i)
+
+    return paths
+
+# ans = getMazePath(1,1,3,3)
+# print(ans)
+
+# Get maze paths with jump value
+
+def getMazePaths(sr, sc, dr, dc):
+
+    if (sr == dr and sc == dc):
+        return ['']
+    
+    paths = []
+
+    # horizontal path
+    for hms in range(1, (dc-sc)+1):
+        hPaths = getMazePaths(sr, sc + hms, dr, dc)
+        for i in hPaths:
+            paths.append('h' + str(hms) + i)
+
+    # vertical path
+    for vms in range(1, (dr-sr) + 1):
+        vPaths = getMazePaths(sr + vms, sc, dr, dc)
+        for i in vPaths:
+            paths.append('v' + str(vms) + i)
+            
+    # diagonal path
+    for dms in range(1, (dr-sr) + 1 and (dc-sc) + 1):
+        dPaths = getMazePaths(sr + dms, sc + dms, dr, dc)
+        for i in dPaths:
+            paths.append('d' + str(dms) + i)
+
+    return paths
+
+ans = getMazePaths(1, 1, 3, 3)
 print(ans)
-
-
