@@ -271,5 +271,24 @@ def getMazePaths(sr, sc, dr, dc):
 
     return paths
 
-ans = getMazePaths(1, 1, 3, 3)
-print(ans)
+# ans = getMazePaths(1, 1, 3, 3)
+# print(ans)
+
+# Print Subsequence
+
+def printSS(que, ans):
+    if (len(que) == 0):
+        print(ans)
+        return 
+
+    chr = que[0]
+    roq = que[1:]
+    
+    printSS(roq, '' + ans)
+    printSS(roq, chr + ans)
+
+printSS('abc', '')
+
+
+
+
