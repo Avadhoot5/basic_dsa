@@ -287,8 +287,50 @@ def printSS(que, ans):
     printSS(roq, '' + ans)
     printSS(roq, chr + ans)
 
-printSS('abc', '')
+# printSS('abc', '')
 
+# print keypad combination
+
+def printKPC(que, ans):
+    if (len(que) == 0): 
+        print(ans)
+        return 
+
+    digit_To_Letters = {
+        '2': 'abc',
+        '3': 'def',
+        '4': 'ghi',
+        '5': 'jkl',
+        '6': 'mno',
+        '7': 'pqrs',
+        '8': 'tuv',
+        '9': 'wxyz',
+        }
+    
+    ch = que[0]
+    roq = que[1:]
+    
+    for char in digit_To_Letters[ch]:
+        printKPC(roq, ans + char)
+
+# printKPC('23', '')
+
+# ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']
+# ad,ae,af,bd,be,bf,cd,ce,cf
+
+# print stair paths
+
+def getStairs(n, path):
+    if (n < 0): return
+    if (n == 0):
+        print(path)
+        return
+
+    getStairs(n-1, str(1) + path)
+    getStairs(n-2, str(2) + path)
+    getStairs(n-3, str(3) + path)
+
+# getStairs(4, '')
 
 
 
