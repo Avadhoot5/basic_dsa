@@ -333,4 +333,51 @@ def getStairs(n, path):
 # getStairs(4, '')
 
 
+def mazePath(sr, sc, dr, dc, ans):
+    
+    if (sr == dr and sc == dc):
+        print(ans)
+        return
+
+    if (sc < dc):
+        mazePath(sr, sc + 1, dr, dc, ans + 'h')
+
+    if (sr < dr):
+        mazePath(sr + 1, sc, dr, dc, ans + 'v')
+
+# mazePath(1, 1, 3, 3, '')
+
+def printMPJ(sr, sc, dr, dc, ans):
+    if (sr == dr and sc == dc):
+        print(ans)
+        return
+    
+    for ms in range(1, (dc-sc)+1):
+        printMPJ(sr, sc + ms, dr, dc, ans + 'h' + str(ms))
+    
+    for ms in range(1, (dr-sr)+1):
+        printMPJ(sr + ms, sc, dr, dc, ans + 'v' + str(ms))
+
+    for d in range(1, (dc-sc)+1 and (dr-sr)+1):
+        printMPJ(sr + d, sc + d, dr, dc, ans + 'd' + str(d))
+
+# printMPJ(1, 1, 3, 3, '')
+
+# Print permutations
+
+def printPT(str, ans):
+    pass
+
+printPT('abc', '')
+
+# Print encodings.
+
+encode = [0, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+def printEncoding(str, ans):
+    pass
+
+printEncoding('12103', '')
+
+# Alternate method
 
