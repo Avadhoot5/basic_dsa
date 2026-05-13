@@ -365,10 +365,19 @@ def printMPJ(sr, sc, dr, dc, ans):
 
 # Print permutations
 
-def printPT(str, ans):
-    pass
+def printPT(que, ans):
+    if (len(que) == 0):
+        print(ans)
+        return
 
-printPT('abc', '')
+    for i in range(len(que)):
+        ch = que[i]
+        qlpart = que[:i]
+        qrpart = que[i+1:]
+        roq = qlpart + qrpart
+        printPT(roq, ans + ch)
+
+# printPT('abc', '')
 
 # Print encodings.
 
@@ -380,4 +389,3 @@ def printEncoding(str, ans):
 printEncoding('12103', '')
 
 # Alternate method
-
