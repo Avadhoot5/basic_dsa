@@ -221,16 +221,231 @@ def finalPattern(n):
 
         print()
     
-finalPattern(4)
+# finalPattern(4)
 
+# link - https://takeuforward.org/strivers-a2z-dsa-course/must-do-pattern-problems-before-starting-dsa
 
+def p_pattern_1(n):
+    for i in range(0, n):
+        print('*' * n)
 
+# p_pattern_1(5)
 
+def p_pattern_2(n):
+    for i in range(1, n+1):
+        print('*' * i)
 
+# p_pattern_2(5)
 
+def p_pattern_3(n):
+    num = ''
+    for i in range(1, n+1):
+        num += str(i)
+        print(num)
 
+# p_pattern_3(5)
 
+def p_pattern_4(n):
 
+    for i in range(1,n+1):
+        print(str(i) * i)
 
+# p_pattern_4(5)
 
+def p_pattern_5(n):
+    for i in range(n):
+        print('*' * (n-i))
+
+# p_pattern_5(5)
+
+def p_pattern_6(n):
+    for i in range(n, 0, -1):
+        ans = ''
+        for num in range(1, i+1):
+            ans += str(num)
+        print(ans)
+
+# p_pattern_6(5)
+        
+def p_pattern_7(n):
+    for i in range(1, n+1):
+        print(' ' * (n-i), end = '')
+        print('*' * ((2*i)-1))
+
+# p_pattern_7(5)
+
+def p_pattern_8(n):
+    for i in range(n, 0, -1):
+        print(' ' * (n-i), end = '')
+        print('*' * ((2*i)-1))
+
+# p_pattern_8(5)
+        
+
+def p_pattern_9(n):
+    for i in range(1, (2*n)+1):
+        if (i<=n):
+            print(' ' * (n-i), end='')
+            print('*' * ((2*i)-1))
+        else:
+            print(' ' * (i-n-1), end='')
+            print('*' * (2*(2*n-i)+1))
+
+# p_pattern_9(5)
+
+def p_pattern_10(n):
+    for i in range(1, (2*n)):
+        if (i<=n):
+            print('*' * i)
+        else:
+            print('*' * ((2*n)-i))
+
+# p_pattern_10(5)
+        
+
+def p_pattern_11(n):
+    start = 1
+
+    for i in range(1, n+1):
+        if (i % 2 == 0): start = 0
+        else: start = 1
+        for j in range(1, i+1):
+            print(start, end='')
+            start = 1-start
+        print()
+
+# p_pattern_11(5)
+
+def p_pattern_12(n):
+
+    for i in range(1, n+1):
+        for j in range(1, i+1):
+            print(j, end='')
+        
+        print(' ' * (2*(n-i)), end='')
+
+        for k in range(i, 0, -1):
+            print(k, end='')
+        print()
+
+# p_pattern_12(5)
+
+def p_pattern_13(n):
+    value = 1
+
+    for i in range(1, n+1):
+        for j in range(1, i+1):
+            print(value, end =' ')
+            value += 1
+        print()
+
+# p_pattern_13(5)
+        
+def p_pattern_14(n):
+    
+    for i in range(65, 65+n):
+        for j in range(65, i+1):
+            print(chr(j), end ='')
+        print()
+
+# p_pattern_14(5)
+
+def p_pattern_15(n):
+    
+    for i in range(5, 0, -1):
+        for j in range(65, i+65):
+            print(chr(j), end='')
+        print()
+
+# p_pattern_15(5)
+        
+def p_pattern_16(n):
+    
+    for i in range(0, n):
+        print(chr(i+65) * (i+1))
+
+# p_pattern_16(5)
+        
+def p_pattern_17(n):
+
+    for i in range(65, 65+n):
+        print(' ' * ((65+n)-i), end='')
+        for j in range(65, i):
+            print(chr(j), end='')
+        for k in range(i, 64, -1):
+            print(chr(k), end='')
+        print()
+
+# p_pattern_17(5)s
+
+def p_pattern_18(n):
+
+    for i in range(65+n, 64, -1):
+        for k in range(i, 65+n):
+            print(chr(k), end='')
+        print()
+
+# p_pattern_18(5)
+        
+def p_pattern_19(n):
+    
+    for i in range(1, (2*n)+1):
+        if (i <= n):
+            print('*' * (n-i+1), end='')
+            print(' ' * ((2*i)-2), end='')
+            print('*' * (n-i+1), end='')
+        else:
+            print('*' * (i-n), end='')
+            print(' ' * (2*((2*n)-i)), end='')
+            print('*' * (i-n), end='')
+        print()
+
+# p_pattern_19(5)
+        
+def p_pattern_20(n):
+    
+    for i in range(1, (2*n)+1):
+        if (i <= n):
+            print('*' * i, end='')
+            print(' ' * (2*(n-i)), end='')
+            print('*' * i, end='')
+        else:
+            print('*' * ((2*n) - i), end='')
+            print(' ' * (2*(i-n)), end='')
+            print('*' * ((2*n) - i), end='')
+
+        print()
+
+# p_pattern_20(5)
+
+def p_pattern_21(n):
+    
+    for i in range(1, n+1):
+        if (i == 1 or i == n):
+            print('*' * n)
+        else:
+            for j in range(1, n+1):
+                if (j==1 or j == n): print('*', end='')
+                else: print(' ', end='')
+            print()
+
+# p_pattern_21(5)
+        
+def p_pattern_22(n):
+    original_N = n
+    n = 2*n-1
+    
+    for i in range(0, n):
+        for j in range(0, n):
+            top = i
+            left = j
+            bottom = n-i-1
+            right = n-j-1
+
+            value = min(top, left, bottom, right)
+            print(original_N-value, end='')
+
+        print()
+
+# p_pattern_22(4)
 
