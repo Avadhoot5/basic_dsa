@@ -187,3 +187,74 @@ def gcd_hcf_ea(a,b):
 # print(gcd_hcf_ea(20,40))
 # print(gcd_hcf_ea(100, 85))
 
+
+# Lec 5. RECURSION 
+
+# Sum of first n terms. eg n = 5. 13 + 23 + 33 + 43 + 53 = 225
+
+def sum_n(n):
+    if (n == 0): return 0
+    value = n**3
+    ans = value + sum_n(n-1)
+    return ans
+
+# print(sum_n(5))
+
+# very high run time for recursive code 
+
+# Basic recursion problems
+
+# print name 5 times
+
+def print_name(name, n):
+    if (n == 0): return
+    print('test')
+    print_name(name, n-1)
+
+# print_name('test', 5)
+
+# recursion - print from 1 to n
+
+def print_asc(n):
+    if (n == 0): return
+    print_asc(n-1)
+    print(n)
+
+# print_asc(5)
+
+# print from n to 1 
+
+def print_desc(n):
+    if (n == 0): return
+    print(n)
+    print_desc(n-1)
+
+# print_desc(5)
+
+# sum of first N numbers. - 2 methods - parameterised way, functional way
+
+
+
+# print fact for every number less than or equal to N
+
+# reverse an array
+
+inputArr = [1, 4, 3, 2, 6, 5, 9]
+
+# using for loop
+
+inputArr2 = [1, 4, 3, 2, 6, 5, 9]
+
+# result [9, 5, 6, 2, 3, 4, 1]
+
+# check if a string is palindrome or not.
+
+# Leetcode question - 
+
+# Optimal solution
+
+# Multiple recursion calls
+
+
+
+
