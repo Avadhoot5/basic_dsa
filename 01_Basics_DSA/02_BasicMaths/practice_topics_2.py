@@ -233,9 +233,43 @@ def print_desc(n):
 
 # sum of first N numbers. - 2 methods - parameterised way, functional way
 
+# parameterised 
 
+def sum_param(n, ans):
+    if (n == 0): return ans
+    return sum_param(n-1, n + ans)
+
+# print(sum_param(10, 0))
+
+# functional 
+
+def sum_fun(n):
+    if (n == 0): return 0
+    ans = sum_fun(n-1) + n
+    return ans
+
+# print(sum_fun(10))
 
 # print fact for every number less than or equal to N
+
+def fact(n):
+    if (n == 0):
+        return 1
+    return n * fact(n-1)
+
+# print(fact(4))
+
+def print_fact(n):
+    if (n == 0): return 1
+    value = print_fact(n-1)
+    print(n * value, end = ' ' )
+    return n * value
+
+print_fact(4)
+
+
+
+
 
 # reverse an array
 
