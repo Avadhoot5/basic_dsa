@@ -265,30 +265,94 @@ def print_fact(n):
     print(n * value, end = ' ' )
     return n * value
 
-print_fact(4)
-
-
-
-
+# print_fact(4)
 
 # reverse an array
-
-inputArr = [1, 4, 3, 2, 6, 5, 9]
 
 # using for loop
 
 inputArr2 = [1, 4, 3, 2, 6, 5, 9]
 
+def reverse_array(arr):
+    n = len(arr) - 1
+    for i in range(0, int(n//2)+1):
+        arr[i], arr[n-i] = arr[n-i], arr[i]
+    return arr
+
+# print('Array before: ',inputArr2)
+# reverse_array(inputArr2)
+# print('Array after: ',inputArr2)
+
+# recursive approach
+
+inputArr = [1, 4, 3, 2, 6, 5, 9]
+
+def rec_rev_arr(arr, i, n):
+    if (i >= n//2): return arr
+    arr[i], arr[n-i] = arr[n-i], arr[i]
+    return rec_rev_arr(arr, i+1, n)
+
+# print('Array before: ',inputArr)
+# rec_rev_arr(inputArr, 0, len(inputArr)-1)
+# print('Array after: ',inputArr)
+
 # result [9, 5, 6, 2, 3, 4, 1]
 
 # check if a string is palindrome or not.
 
+def palindrome(i, s):
+    if (i >= len(s)//2): return 'Palindrome'
+    if (s[i] != s[len(s)-i-1]):
+        return 'Not Palindrome'
+    return palindrome(i+1,s)
+
+# print(palindrome(0,'teset'))
+
 # Leetcode question - 
+def palindromeLC(s):
+    ans = ''
+    for i in s:
+        if (i.isalnum()):
+            ans += i
+    return (ans.lower() == ans[::-1].lower())
+
+# result = palindromeLC('A man, a plan, a canal: Panama')
+# print(result)
 
 # Optimal solution
 
+def palindromeLCO(s):
+    
+    def alpha_check(c):
+        return (ord('A') <= ord(c) <= ord('Z') 
+            or ord('a') <= ord(c) <= ord('z')
+            or ord('0') <= ord(c) < ord('9'))
+
+    l,r = 0, len(s) - 1
+
+    while (l < r):
+        while (l < r and not alpha_check(s[l])):
+            l += 1
+        while (r > l and not alpha_check(s[r])):
+            r -= 1
+        if (s[l].lower() != s[r].lower()):
+            return False
+        l += 1
+        r -= 1
+    return True
+
+# print(palindromeLCO('A man, a plan, a canal: Panama'))
+
 # Multiple recursion calls
 
+def fibo(n):
+    if (n == 0): return 0
+    if (n == 1): return 1
 
+    first = fibo(n-1)
+    second = fibo(n-2)
+    return first + second
 
+# for i in range(7):
+#     print(fibo(i), end = ' ')
 
