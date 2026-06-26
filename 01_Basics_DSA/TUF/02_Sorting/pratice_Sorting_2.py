@@ -60,6 +60,42 @@ def insert_sort(arr):
 
     return arr
 
-insert_ans = insert_sort(insert_arr)
-print(insert_ans)
+# insert_ans = insert_sort(insert_arr)
+# print(insert_ans)
 
+# Merge Sort - divide and merge
+
+# Two merge sort - uses iterative method
+
+# Merge - Two sorted list into one list that is also sorted
+# Algorithm 
+
+arr1 = [9, 13, 20, 24, 46, 52]
+arr2 = [2, 3, 5, 6, 8, 16]
+
+def two_way_merge(A, B):
+    m, n = len(A), len(B)
+    i, j, k = 0,0,0
+    merge_arr = [0] * (m+n)
+
+    while (i < m and j < n):
+        if (A[i] < B[j]):
+            merge_arr[k] = A[i]
+            i += 1
+            k += 1
+        else:
+            merge_arr[k] = B[j]
+            j += 1
+            k += 1
+    
+    for rem in range(i, m):
+        merge_arr[k] = A[rem]
+        k += 1
+        
+    for rem in range(j, n):
+        merge_arr[k] = B[rem]
+        k += 1
+
+    return merge_arr
+
+# print(two_way_merge(arr1, arr2))
