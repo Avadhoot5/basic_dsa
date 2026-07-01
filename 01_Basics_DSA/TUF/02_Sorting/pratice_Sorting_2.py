@@ -99,3 +99,113 @@ def two_way_merge(A, B):
     return merge_arr
 
 # print(two_way_merge(arr1, arr2))
+
+
+# Merge Sort - uses recursive method
+
+merge_arr = [3,4,1,6,2,5,7]
+
+def merge(arr, low, mid, high):
+    left = low
+    right = mid+1
+    temp = []
+
+    while (left <= mid and right <= high):
+        if (arr[left] <= arr[right]):
+            temp.append(arr[left])
+            left += 1
+        else:
+            temp.append(arr[right])
+            right += 1
+    
+    while (left <= mid):
+        temp.append(arr[left])
+        left += 1
+
+    while (right <= high):
+        temp.append(arr[right])
+        right += 1
+
+    for item in range(low, high):
+        arr[item] = temp[item - low]
+
+def merge_s(arr, low, high):
+    if (low >= high): return
+    mid = (low + high) // 2
+    merge_s(arr, low, mid)
+    merge_s(arr, mid+1, high)
+    merge(arr, low, mid, high)
+
+def merge_sort(arr, n):
+    merge_s(arr, 0, n-1)
+
+# merge_sort(merge_arr, len(merge_arr))
+# print(merge_arr)
+
+# recursive bubble sort
+
+rec_bubble_arr = [13, 46, 24, 52, 20, 9]
+
+def rec_bubble_sort(arr, n):
+    if (n == 1): return arr
+
+    swapped = False
+    for i in range(0, n-1):
+        if (arr[i] > arr[i+1]):
+            arr[i+1], arr[i]=  arr[i], arr[i+1]
+            swapped = True
+        if not swapped:
+            return arr
+    return rec_bubble_sort(arr, n-1)
+
+# rec_bubble_sort(rec_bubble_arr, len(rec_bubble_arr))
+# print(rec_bubble_arr)
+
+# recursive insertion sort
+
+rec_insert_arr = [13, 46, 24, 52, 20, 9]
+
+def rec_insertion_sort(arr, n, i):
+    if (i == n): return arr
+
+    j = i
+
+    while (j > 0 and arr[j-1] > arr[j]):
+        arr[j], arr[j-1] = arr[j-1], arr[j]
+        j -= 1
+
+    return rec_insertion_sort(arr, n, i+1)
+
+# rec_insertion_sort(rec_insert_arr, len(rec_insert_arr), 1)
+# print(rec_insert_arr)
+
+# Quick Sort
+
+quick_arr = [4, 6, 2, 5, 7, 9, 1, 3]
+
+def partition(arr, low, high):
+    pivot = arr[low]
+    i = low
+    j = high
+
+    while (i < j):
+        while (arr[i] <= pivot and i <= (high-1)):
+            i += 1
+        while (arr[j] > pivot and j >= (low+1)):
+            j -= 1
+        if (i < j):
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[low], arr[j] = arr[j], arr[low]
+    return j
+
+def quick_sort(arr, low, high):
+    if (low < high):
+        p_index = partition(arr, low, high)
+        quick_sort(arr, low, p_index-1)
+        quick_sort(arr, p_index+1, high)
+
+print('Before Sort', quick_arr)
+quick_sort(quick_arr, 0, len(quick_arr)-1)
+print('After Sort', quick_arr)
+
+
