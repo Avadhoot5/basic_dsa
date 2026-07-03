@@ -159,7 +159,7 @@ def remove_dup_set(arr):
 
     return list(ans_set)
 
-print(remove_dup_set(dup_array_2))
+# print(remove_dup_set(dup_array_2))
 
 # 3. Optimal approach
 
@@ -176,3 +176,126 @@ def remove_dup_opm(arr):
     return i+1
 
 # print(remove_dup_opm(dup_array_3))
+
+# 1. Left Rotate array by 1.
+
+rotate_arr_1 = [1,2,19,3,88,56,91,14,27,65]
+
+def rotate_array_by_1(arr):
+    n = len(arr)
+    temp = arr[0]
+
+    for i in range(n-1):
+        arr[i] = arr[i+1]
+
+    arr[-1] = temp
+
+# print('Array before: ', rotate_arr_1)
+# rotate_array_by_1(rotate_arr_1)
+# print('Array after: ', rotate_arr_1)
+
+# 2. Left Rotate array by K places.
+
+# Brute force -> [TC: O(N+D), SC: O(D)]
+
+def rotate_array_brute(arr, d):
+    n = len(arr)
+    d = d % n
+    temp = []
+
+    for i in range(d):
+        temp.append(arr[i])
+    
+    for j in range(d, n):
+        arr[j-d] = arr[j]
+    
+    for k in range(n-d, n):
+        arr[k] = temp[k-(n-d)]
+    
+    return arr
+
+# print('Array before: ', rotate_arr_1)
+# rotate_array_brute(rotate_arr_1, 3)
+# print('Array after: ', rotate_arr_1)
+
+# optimal solution [TC: O(N), SC: O(1)]
+
+rotate_arr_2 = [1,2,19,3,88,56,91,14,27,65]
+
+def rotate_array_opm(arr, d):
+
+    def reverse(arr, left, right):
+        while (left < right):
+            arr[left], arr[right] = arr[right], arr[left]
+            left += 1
+            right -= 1
+
+    n = len(arr)
+    d = d % n
+
+    reverse(arr, 0, d-1)
+    reverse(arr, d, n-1)
+    reverse(arr, 0, n-1)
+
+    return arr
+
+# print('Array before: ', rotate_arr_2)
+# rotate_array_opm(rotate_arr_2, 3)
+# print('Array after: ', rotate_arr_2)
+
+# Move Zeros to End 
+
+zero_arr = [1, 0, 2, 3, 2, 0, 0, 4, 5, 1]
+
+def move_zero_brute(arr):
+    n = len(arr)
+    temp = []
+
+    for i in range(n):
+        if (arr[i] != 0): temp.append(arr[i])
+    
+    for i in range(len(temp)):
+        arr[i] = temp[i]
+    
+    for i in range(len(temp), n):
+        arr[i] = 0
+
+    return arr
+
+# print('Array before: ', zero_arr)
+# move_zero_brute(zero_arr)
+# print('Array after: ', zero_arr)
+
+def move_zero_opm(arr):
+    n = len(arr)
+    j = -1
+
+    for i in range(n):
+        if (arr[i] == 0):
+            j = i
+            break
+
+    for i in range(j+1, n):
+        if (arr[i] != 0):
+            arr[i], arr[j] = arr[j], arr[i]
+            j += 1
+    return arr
+
+# print('Array before: ', zero_arr)
+# move_zero_opm(zero_arr)
+# print('Array after: ', zero_arr)
+
+# Linear Search
+
+linear_arr = [42,7,19,3,88,56,91,14,27,65]
+
+def linear_search(arr, num):
+    n = len(arr)
+    
+    for i in range(n):
+        if (arr[i] == num):
+            return i
+    return -1
+
+# print(linear_search(linear_arr, 27))
+
