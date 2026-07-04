@@ -299,3 +299,95 @@ def linear_search(arr, num):
 
 # print(linear_search(linear_arr, 27))
 
+# Union of two sorted arrays.
+
+# Case 1: Arrays are unsorted - Go with the set approach.
+
+union_arr_1 = [1, 2, 2, 3, 4, 5, 6]
+union_arr_2 = [2, 3, 4, 4, 7, 8]
+
+# brute force approach 
+
+def union_arr_brute(arr1, arr2):
+    seen = set()
+    ans = []
+
+    for x in arr1 + arr2:
+        if x not in seen:
+            seen.add(x)
+            ans.append(x)
+    
+    return ans
+
+# print(union_arr_brute(union_arr_1, union_arr_2))
+
+def union_arr_opm(arr1, arr2):
+    m = len(arr1)
+    n = len(arr2)
+    i, j = 0,0
+    ans_arr = []
+
+    while (i < m and j < n):
+        if (arr1[i] <= arr2[j]):
+            if (len(ans_arr) == 0 or ans_arr[-1] != arr1[i]):
+                ans_arr.append(arr1[i])
+            i+=1
+        else:
+            if (len(ans_arr) == 0 or ans_arr[-1] != arr2[j]):
+                ans_arr.append(arr2[j])
+            j+=1
+    
+    while (i < m):
+        if (len(ans_arr) == 0 or ans_arr[-1] != arr1[i]):
+            ans_arr.append(arr1[i])
+        i+=1
+    while (j < n):
+        if (len(ans_arr) == 0 or ans_arr[-1] != arr2[j]):
+            ans_arr.append(arr2[j])
+        j+=1
+    
+    return ans_arr
+
+# print(union_arr_opm(union_arr_1, union_arr_2))
+
+# Intersection of Sorted Arrays 
+
+intersect_arr_1 = [1, 2, 2, 3, 4, 5, 6]
+intersect_arr_2 = [2, 3, 5, 6, 7, 8]
+
+def intersection_brute(arr1, arr2):
+    ans_set = set() # SC: O(n1 + n2)
+
+    for i in arr1: # TC: O(n1 * n2)
+        if i in arr2:
+            ans_set.add(i)
+    
+    return list(ans_set)    # SC: O(n1 + n2), TC: O(n1 + n2)
+
+# print(intersection_brute(intersect_arr_1, intersect_arr_2))
+ 
+def intersection_opm(arr1, arr2):
+    ans_arr = []
+    m = len(arr1)
+    n = len(arr2)
+    i, j = 0,0
+
+    while (i < m and j < n):
+        if (arr1[i] < arr2[j]):
+            i += 1
+        elif (arr1[i] > arr2[j]):
+            j += 1
+        else:
+            if (len(ans_arr) == 0 or ans_arr[-1] != arr1[i]):
+                ans_arr.append(arr1[i])
+            i += 1
+            j += 1
+
+    return ans_arr
+
+# print(intersection_opm(intersect_arr_1, intersect_arr_2))
+
+
+
+
+
