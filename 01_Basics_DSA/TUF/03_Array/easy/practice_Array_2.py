@@ -387,6 +387,94 @@ def intersection_opm(arr1, arr2):
 
 # print(intersection_opm(intersect_arr_1, intersect_arr_2))
 
+# missing number in an array
+
+miss_num_ar = [9,6,4,2,3,5,7,0,1]
+
+# BF -> TC = O(n*n) SC = O(1)
+
+def missing_num_brute(arr):
+    n = len(arr)
+
+    for i in range(0, n+1):
+        if not(i in arr):
+            return i
+
+# print(missing_num_brute(miss_num_ar))
+
+# Better -> TC = O(N), SC = O(N)
+
+def missing_num_better(arr):
+    n = len(arr)
+    hash_arr = [0] * (n+1)
+
+    for i in range(n):
+        hash_arr[arr[i]] = 1
+    
+    for i in range(len(hash_arr)):
+        if (hash_arr[i] == 0):
+            return i
+
+# print(missing_num_better(miss_num_ar))
+
+def missing_num_opm1(arr):
+    n = len(arr)
+    total_sum = (n*(n+1))//2
+    arr_sum = 0
+    
+    for i in range(n):
+        arr_sum += arr[i]
+    
+    return (total_sum - arr_sum)
+
+# print(missing_num_opm1(miss_num_ar))
+
+def missing_num_opm2(arr):
+    n = len(arr)
+    xor1, xor2 = 0, 0
+
+    for i in range(n):
+        xor1 = xor1 ^ arr[i]
+        xor2 = xor2 ^ i
+    xor2 = xor2 ^ n
+    return xor1 ^ xor2
+
+# print(missing_num_opm2(miss_num_ar))
+
+# Max Consecutive number of 1's
+
+consecutive_one_arr = [1, 1, 0, 1, 1, 1, 0, 1, 1]
+
+def max_consecutive_one(arr):
+    n = len(arr)
+    count, max_count = 0, 0
+
+    for i in range(n):
+        if (arr[i] == 1):
+            count += 1
+            if (count > max_count):max_count = count
+        else:
+            count = 0
+    return max_count
+
+# print(max_consecutive_one(consecutive_one_arr))
+
+# Find the number that appears once, and other numbers twice.
+
+find_num_arr = [1, 1, 2, 3, 3, 4, 4]
+
+def find_num_opm(arr):
+    n = len(arr)
+    xor = 0
+
+    for i in range(n):
+        xor = xor ^ arr[i]
+    
+    return xor
+
+# print(find_num_opm(find_num_arr))
+
+
 
 
 
