@@ -474,8 +474,74 @@ def find_num_opm(arr):
 
 # print(find_num_opm(find_num_arr))
 
+# Longest subarray with given sum K(positives). [TC- O(N*N), SC-O(1)]
 
+longest_subarr = [1, 2, 3, 1, 1, 1, 1, 4, 2, 3]
 
+def longest_subarr_k_brue(arr, k):
+    n = len(arr)
+    max_len = 0
 
+    for i in range(n):
+        iter_sum = 0
+        for j in range(i, n):
+            iter_sum += arr[j]
+            if (iter_sum == k):
+                max_len = max(max_len, j-i+1)
+        
+    return max_len
+
+# print(longest_subarr_k_brue(longest_subarr, 3))
+
+# Optimal for positives, 0s, and negatives [TC- O(N), SC- O(N)]
+
+def longest_subarr_k_opm_1(arr, k):
+    n = len(arr)
+    prefix_sum = {}
+    max_len = 0
+    current_sum = 0
+
+    for i in range(n):
+        current_sum += arr[i]
+
+        if (current_sum == k):
+            max_len = max(max_len, i + 1)
+
+        rem = current_sum - k
+
+        if (rem in prefix_sum):
+            current_len = i-prefix_sum[rem]
+            max_len = max(max_len, current_len)
+
+        if (current_sum not in prefix_sum):
+            prefix_sum[current_sum] = i
+
+    return max_len
+
+# print(longest_subarr_k_opm_1(longest_subarr, 3))
+
+# Optimal for positives [TC- O(N), SC- O(1)]
+
+def longest_subarr_k_opm_2(arr, k):
+    n = len(arr)
+    if (n < 1): return 0
+
+    left, right = 0, 0
+    max_len = 0
+    curr_sum = arr[0]
+
+    while (right < n):
+        while (left <= right and curr_sum > k):
+            curr_sum -= arr[left]
+            left += 1
+        if (curr_sum == k):
+            max_len = max(max_len, (right - left)+1)
+        right += 1
+        if (right < n):
+            curr_sum += arr[right]
+
+    return max_len
+
+# print(longest_subarr_k_opm_2(longest_subarr, 3))
 
 
