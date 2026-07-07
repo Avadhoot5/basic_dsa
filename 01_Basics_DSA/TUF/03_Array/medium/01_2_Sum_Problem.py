@@ -52,7 +52,7 @@ print(twoSumProblemB(newArr, 3))
 def twoSumProblemO(arr,k):
     arr.sort()
     left, right = 0, len(arr)-1
-    for i in range(0, len(arr)):
+    while (left < right):
         currentSum = arr[left] + arr[right]
         if (currentSum == k):
             return 'Yes'
