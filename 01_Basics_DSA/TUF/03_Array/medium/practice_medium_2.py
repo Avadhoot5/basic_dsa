@@ -243,8 +243,27 @@ def max_subarr_opt_2(arr):
 
 # print(max_subarr_opt_2(max_sub_arr))
 
+#  Best Time to Buy and Sell Stock 
 
+# [TC: O(N), SC: O(1)]
 
+stock_arr_1 = [7, 1, 5, 3, 6, 4]
+stock_arr_2 = [7,6,4,3,1]
+
+def stock_buy_sell(arr):
+    n = len(arr)
+    min_element = arr[0]
+    max_profit = 0
+
+    for i in range(1, n):
+        profit = arr[i] - min_element
+        max_profit = max(profit, max_profit)
+        min_element = min(arr[i], min_element)
+
+    return max_profit
+
+print(stock_buy_sell(stock_arr_1))
+print(stock_buy_sell(stock_arr_2))
 
 
 
