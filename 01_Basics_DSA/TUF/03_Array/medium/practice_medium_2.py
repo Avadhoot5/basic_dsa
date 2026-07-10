@@ -262,8 +262,92 @@ def stock_buy_sell(arr):
 
     return max_profit
 
-print(stock_buy_sell(stock_arr_1))
-print(stock_buy_sell(stock_arr_2))
+# print(stock_buy_sell(stock_arr_1))
+# print(stock_buy_sell(stock_arr_2))
+
+# Rearrange Array Elements by Sign | 2 Varieties of same Problem
+
+# Brute. [TC: O(N + N//2), SC: O(N)]
+
+re_arr = [3, 1, -2, -5, 2, -4]
+
+def re_arrange_brute(arr):
+    n = len(arr)
+    pos_arr = []
+    neg_arr = []
+
+    for i in range(n):
+        if (arr[i] < 0):
+            neg_arr.append(arr[i])
+        else:
+            pos_arr.append(arr[i])
+        
+    arr = []
+
+    for i in range(n//2):
+        arr.append(pos_arr[i])
+        arr.append(neg_arr[i])
+
+    return arr
+
+# print(re_arrange_brute(re_arr))
+
+# Optimal [TC: O(N), SC: O(N)]
+
+def re_arrange_opt(arr):
+    n = len(arr)
+    pos_idx = 0
+    neg_idx = 1
+    final_arr = [0] * (n)
+
+    for i in range(n):
+        if (arr[i] >= 0):
+            final_arr[pos_idx] = arr[i]
+            pos_idx += 2
+        else:
+            final_arr[neg_idx] = arr[i]
+            neg_idx += 2
+    return final_arr
+
+# print(re_arrange_opt(re_arr))
+
+# variety 2  - Not equal N//2.
+
+# Optimal [TC: O(N), SC: O(N)]
+
+re_arr_2 = [3, 1, -2, -5, 2, -4, 5, 9, 2, -1]
+
+def re_arrange_opt_2(arr):
+    n = len(arr)
+    pos_arr = []
+    neg_arr = []
+    
+    for i in range(n):
+        if (arr[i] < 0): neg_arr.append(arr[i])
+        else: pos_arr.append(arr[i])
+
+    if (len(pos_arr) > len(neg_arr)):
+        idx = 0
+        for i in range(0, len(neg_arr)):
+            arr[2*i] = pos_arr[i]
+            arr[2*i + 1] = neg_arr[i]
+        idx = 2*(len(neg_arr))
+        for i in range(len(neg_arr), len(pos_arr)):
+            arr[idx] = pos_arr[i]
+            idx += 1
+    else:
+        idx = 0
+        for i in range(0, len(pos_arr)):
+            arr[2*i] = pos_arr[i]
+            arr[2*i + 1] = neg_arr[i]
+        idx = 2*(len(pos_arr))
+        for i in range(len(pos_arr), len(neg_arr)):
+            arr[idx] = neg_arr[i]
+            idx += 1
+
+    return arr
+
+# print(re_arrange_opt_2(re_arr_2))
 
 
 
