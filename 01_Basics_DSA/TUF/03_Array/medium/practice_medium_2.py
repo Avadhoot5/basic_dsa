@@ -349,6 +349,33 @@ def re_arrange_opt_2(arr):
 
 # print(re_arrange_opt_2(re_arr_2))
 
+# Next Permutation 
+
+next_perm_arr = [2, 1, 5, 4, 3, 0, 0]
+
+def next_permutation_opt(arr):
+    idx = -1
+    n = len(arr)
+
+    for i in range(n-2, -1, -1):
+        if (arr[i] < arr[i+1]):
+            idx = i
+            break
+
+    if (idx == -1):
+        return arr.reverse()
+    else:
+        for i in range(n-1, idx, -1):
+            if (arr[i] > arr[idx]):
+                arr[i], arr[idx] = arr[idx], arr[i]
+                break
+    tempArr = arr[idx+1::]
+    tempArr.reverse()
+    return arr[:idx+1] + tempArr
+
+# print(next_permutation_opt(next_perm_arr))
+
+
 
 
 
