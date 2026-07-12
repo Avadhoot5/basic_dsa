@@ -375,14 +375,41 @@ def next_permutation_opt(arr):
 
 # print(next_permutation_opt(next_perm_arr))
 
+# Leaders in an Array
 
+# brute force 
 
+leader_arr = [10, 22, 12, 3, 0, 6]
 
+def leader_arr_brute(arr):
+    n = len(arr)
+    ans_arr = []
 
+    for i in range(n):
+        is_leader = True
+        for j in range(i+1, n):
+            if (arr[j] > arr[i]):
+                is_leader = False
+                break
+        if (is_leader): ans_arr.append(arr[i])
 
+    return ans_arr
 
+# print(leader_arr_brute(leader_arr))
 
+def leader_arr_opt(arr):
+    n = len(arr)
+    is_max = 0
+    ans_arr = []
 
+    for i in range(n-1, -1, -1):
+        if (arr[i] > is_max):
+            ans_arr.append(arr[i])
+            is_max = arr[i]
+    
+    return ans_arr
+
+# print(leader_arr_opt(leader_arr))
 
 
 
