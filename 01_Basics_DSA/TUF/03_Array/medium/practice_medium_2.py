@@ -351,6 +351,14 @@ def re_arrange_opt_2(arr):
 
 # Next Permutation 
 
+# brute force approach - refer yt video for below approach
+
+# 1. using recursion - generate all the possible permutation in sorted manner
+# 2. using Linear search - search for the instance, and return next index.
+# 3. If the value is last element, return the 1st element.
+
+# printing permutation using recursion.
+
 next_perm_arr = [2, 1, 5, 4, 3, 0, 0]
 
 def next_permutation_opt(arr):
@@ -410,6 +418,34 @@ def leader_arr_opt(arr):
     return ans_arr
 
 # print(leader_arr_opt(leader_arr))
+
+# Longest Consecutive Sequence 
+
+longest_seq_arr_1 = [0,3,7,2,5,8,4,6,0,1]
+longest_seq_arr_2 = [102,4,100,1,101,1,3,2]
+
+# brute force approach.
+
+def linear_search(a, x):
+    for i in range(len(a)):
+        if (a[i] == x):
+            return True
+    return False
+
+def longest_seq_brute(arr):
+    n = len(arr)
+    longest = 1
+
+    for i in range(0, n):
+        cnt = 0
+        x = arr[i]
+        while (linear_search(arr, x) == True):
+            x += 1
+            cnt += 1
+        longest = max(longest, cnt)
+    return longest
+
+# print(longest_seq_brute(longest_seq_arr_1))
 
 
 
