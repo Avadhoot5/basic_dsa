@@ -426,26 +426,81 @@ longest_seq_arr_2 = [102,4,100,1,101,1,3,2]
 
 # brute force approach.
 
-def linear_search(a, x):
-    for i in range(len(a)):
-        if (a[i] == x):
+def linear_search(arr, x):
+    for i in range(len(arr)):
+        if (arr[i] == x):
             return True
     return False
 
+# Brute: [TC: O(N*N), SC: O(1)]
+
 def longest_seq_brute(arr):
     n = len(arr)
+    if (n == 0): return 0
+
     longest = 1
 
-    for i in range(0, n):
-        cnt = 0
+    for i in range(n):
+        count = 1
         x = arr[i]
-        while (linear_search(arr, x) == True):
+        while (linear_search(arr, x+1)):
             x += 1
-            cnt += 1
-        longest = max(longest, cnt)
+            count += 1
+        longest = max(longest, count)
+
     return longest
 
 # print(longest_seq_brute(longest_seq_arr_1))
+# print(longest_seq_brute(longest_seq_arr_2))
+
+# Better: [TC: Sort: O(NlogN) + O(N), SC: O(1) - but we are altering the array, if new array: O(N)]
+
+def longest_seq_better(arr):
+    import sys
+    n = len(arr)
+    if (n == 0): return 0
+
+    arr.sort()
+    last_smallest = -sys.maxsize
+    max_count = 1
+    current_count = 0
+
+    for i in range(n):
+        if (arr[i] - 1 == last_smallest):
+            current_count += 1
+            last_smallest = arr[i]
+        elif (arr[i] != last_smallest):
+            current_count = 1
+            last_smallest = arr[i]
+        
+        max_count = max(max_count, current_count)
+
+    return max_count
+
+# print(longest_seq_better(longest_seq_arr_1))
+# print(longest_seq_better(longest_seq_arr_2))
+
+# [TC: O(3N => O(N) set conversion, O(N) for loop, O(N) The while loop is not O(N) for every element. Each number is visited at most once across all while loops because only sequence starters (i-1 not in ans_set) begin an expansion., SC: O(N)]
+
+def longest_seq_optimal(arr):
+    if (len(arr) == 0): return 0
+
+    ans_set = set(arr)
+    longest = 1
+
+    for i in ans_set:
+        if (i-1 not in ans_set):
+            x = i
+            count = 1
+            while (x+1 in ans_set):
+                count += 1
+                x += 1
+                longest = max(longest, count)
+
+    return longest
+
+# print(longest_seq_optimal(longest_seq_arr_1))
+# print(longest_seq_optimal(longest_seq_arr_2))
 
 
 
