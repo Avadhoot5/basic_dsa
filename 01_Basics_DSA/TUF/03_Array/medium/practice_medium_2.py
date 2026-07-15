@@ -502,6 +502,43 @@ def longest_seq_optimal(arr):
 # print(longest_seq_optimal(longest_seq_arr_1))
 # print(longest_seq_optimal(longest_seq_arr_2))
 
+# Set Matrix Zeroes | O(1) Space Approach
+
+# Brute force 
+# 1.) traverse in the matrix and search for 0s. and mark the respective col and row elements with -1.
+# 2.) Again loop through the matrix and convert the -1 to 0s
+
+# TC. O(N*M) * O(N+M) + O(N*M)
+
+matrix = [[1,1,1],[1,0,1],[1,1,1]]
+
+def set_matrix_zero(arr, n, m):
+
+    def mark_row(arr, n, m, i):
+        for j in range(m):
+            if (arr[i][j] != 0):
+                arr[i][j] = -1
+
+    def mark_col(arr, n, m , j):
+        for i in range(n):
+            if (arr[i][j] != 0):
+                arr[i][j] = -1
+
+    for i in range(n):
+        for j in range(m):
+            if (arr[i][j] == 0):
+                mark_row(arr, n, m, i)
+                mark_col(arr, n, m, j)
+    
+    for i in range(n):
+        for j in range(m):
+            if (arr[i][j] == -1):
+                arr[i][j] = 0
+    return arr
+
+# print(set_matrix_zero(matrix, len(matrix), len(matrix[0])))
+
+
 
 
 

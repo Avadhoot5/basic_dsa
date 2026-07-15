@@ -4,7 +4,7 @@
 # 1.) traverse in the matrix and search for 0s. and mark the respective col and row elements with -1.
 # 2.) Again loop through the matrix and convert the -1 to 0s
 
-# TC. O(N*M) + O(N+M) + O(N*M)
+# TC. O(N*M) * O(N+M) + O(N*M)
 
 matrix = [[1,1,1],[1,0,1],[1,1,1]]
 
