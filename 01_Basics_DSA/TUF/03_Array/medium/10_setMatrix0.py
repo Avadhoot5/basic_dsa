@@ -32,8 +32,8 @@ def setMatrixZeroBF(matrix, n, m):
                 matrix[i][j] = 0
     return matrix
 
-ans = setMatrixZeroBF(matrix, len(matrix), len(matrix[0]))
-print(ans)
+# ans = setMatrixZeroBF(matrix, len(matrix), len(matrix[0]))
+# print(ans)
 
 # Output: [[1,0,1],[0,0,0],[1,0,1]]
 
@@ -58,7 +58,7 @@ def setMatrixZeroB(matrix, n , m):
     
     return matrix
 
-print(setMatrixZeroB(matrixB, len(matrixB), len(matrixB[0])))
+# print(setMatrixZeroB(matrixB, len(matrixB), len(matrixB[0])))
 
 # optimal approach 
 
