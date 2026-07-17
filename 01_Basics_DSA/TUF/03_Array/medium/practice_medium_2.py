@@ -592,7 +592,43 @@ def set_matrix_optimal(matrix, n, m):
     
     return matrix
 
-print(set_matrix_optimal(matrix_opt, len(matrix_opt), len(matrix_opt[0])))
+# print(set_matrix_optimal(matrix_opt, len(matrix_opt), len(matrix_opt[0])))
+
+# Rotate Matrix/Image by 90 Degrees
+
+rotate_matrix_1 = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+
+rotate_matrix_2 = [[1,2,3],[4,5,6],[7,8,9]]
+
+# [TC: O(N*N), SC: O(N*N )]
+
+def rotate_matrix_brute(matrix):
+    n = len(matrix)
+    ans = [[0] * n for _ in  range(n)]
+
+    for i in range(n):
+        for j in range(n):
+            ans[j][n-1-i] = matrix[i][j]
+
+    return ans
+
+# print(rotate_matrix_brute(rotate_matrix_2))
+
+# [TC: O(N*N + N), SC: O(1)]
+
+def rotate_matrix_optimal(matrix):
+    n = len(matrix)
+
+    for i in range(n-1):
+        for j in range(i+1, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    
+    for i in range(n):
+        matrix[i].reverse()
+
+    return matrix 
+
+# print(rotate_matrix_optimal(rotate_matrix_2))
 
 
 
