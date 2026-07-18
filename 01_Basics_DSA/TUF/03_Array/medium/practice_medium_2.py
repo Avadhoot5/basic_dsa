@@ -630,79 +630,91 @@ def rotate_matrix_optimal(matrix):
 
 # print(rotate_matrix_optimal(rotate_matrix_2))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Spiral Traversal of a Matrix | Spiral Matrix
+
+# implementation logic
+# code clean check
+
+spiral_matrix_arr = [[1,2,3],[4,5,6],[7,8,9]]
+
+def spiral_matrix(matrix):
+    n = len(matrix)
+    m = len(matrix[0])
+    left, top = 0, 0
+    right, bottom = m-1, n-1
+    ans = []
+
+    while (left <= right and top <= bottom):
+
+        # traverse right
+        for i in range(left, right+1):
+            ans.append(matrix[top][i])
+        top += 1
+        
+        # traverse bottom 
+        for i in range(top, bottom+1):
+            ans.append(matrix[i][right])
+        right -= 1
+
+        if (top <= bottom):
+            # traverse left
+            for i in range(right, left-1, -1):
+                ans.append(matrix[bottom][i])
+            bottom -= 1
+
+        if (left <= right):
+            # traverse top
+            for i in range(bottom, top-1, -1):
+                ans.append(matrix[i][left])
+            left += 1
+
+    return ans
+
+# print(spiral_matrix(spiral_matrix_arr))
+
+# Count Subarray sum Equals K 
+
+count_sub_arr_1 = [1, 2, 3, 1, 1, 1, 1, 4, 2, 3]
+count_sub_arr_2 = [1, 2, 3, -3, 1, 1, 1, 4, 2, -3]
+
+def count_sub_eq_k_brute(arr, k):
+    n = len(arr)
+    if (n == 0): return 0
+    sub_count = 0
+
+    for i in range(n):
+        current_sum = 0
+        for j in range(i, n):
+            current_sum += arr[j]
+            if (current_sum == k):
+                sub_count += 1
+    return sub_count
+
+# print(count_sub_eq_k_brute(count_sub_arr_1, 3))
+# print(count_sub_eq_k_brute(count_sub_arr_2, 3))
+
+# Optimal 
+
+def count_sub_eq_k_opm(arr, k):
+    n = len(arr)
+    count_sum = 0
+    pre_sum = {}
+    current_sum = 0
+    pre_sum[0] = 1
+
+    for i in range(n):
+        current_sum += arr[i]
+        rem = current_sum - k
+
+        if (rem in pre_sum):
+            count_sum += pre_sum[rem]
+        if (current_sum not in pre_sum):
+            pre_sum[current_sum] = 1    
+        else:
+            pre_sum[current_sum] += 1    
+
+    return count_sum
+
+# print(count_sub_eq_k_opm(count_sub_arr_1, 3))
+# print(count_sub_eq_k_opm(count_sub_arr_2, 3))
 
